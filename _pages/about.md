@@ -2,11 +2,11 @@
 layout: about
 title: About
 permalink: /
-subtitle: PhD Student @ Lei Jun Science and Technology Building, Wuhan University, China
+subtitle: PhD student @ Wuhan University, Wuhan City, Hubei Province, China
 
 profile:
   align: left
-  image: prof_pic.jpg
+  image: bio_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <a href="/assets/pdf/cv.pdf"><i class="ai ai-cv-square ai-2x"></i></a>
