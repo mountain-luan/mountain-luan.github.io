@@ -1,8 +1,9 @@
 ---
 layout: post
-date: 2025-12-18
+title: My website is live!
+date: 2024-12-18 12:00:00-0400
 inline: true
 related_posts: false
 ---
 
-My personal website is online.
+Welcome to my new personal academic website.
