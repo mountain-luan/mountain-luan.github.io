@@ -2,16 +2,16 @@
 layout: about
 title: About
 permalink: /
-subtitle: PhD student @ School of Mathematics and Statistics, Wuhan University, China
+subtitle: Lei Jun Science and Technology Building, Wuhan University, China
 
 profile:
   align: left
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <a href="/assets/pdf/cv.pdf"><i class="ai ai-cv-square ai-2x"></i></a>
+    <a href="https://www.linkedin.com/in/yu-changqian/"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+    <a href="https://scholar.google.com/citations?user=Hv-vj2sAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-2x"></i></a>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
