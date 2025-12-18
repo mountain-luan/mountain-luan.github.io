@@ -13,8 +13,8 @@ profile:
     <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate"><i class="ai ai-google-scholar-square ai-2x"></i></a>
 
 news: true # includes a list of news items
-selected_papers: false # includes a list of papers marked as "selected={true}"
-awards: false
+selected_papers: true # includes a list of papers marked as "selected={true}"
+awards: true
 social: false # includes social icons at the bottom of the page
 
 ---
