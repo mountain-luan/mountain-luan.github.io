@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>PhD student</a> @ Wuhan University, China
+subtitle: PhD student @ School of Mathematics and Statistics, Wuhan University, China
 
 profile:
   align: left
