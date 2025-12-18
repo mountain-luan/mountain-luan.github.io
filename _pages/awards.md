@@ -9,10 +9,10 @@ nav_order: 3
 
 ### Awards
 
-- (10/2025) Best Student Paper Award (First Prize), The 21st Chinese Conference on Complex Networks (CCCN)
-- (07/2025) National Government Study Abroad Scholarship, China Scholarship Council
+- (10/2025) Best Student Paper Award (First Prize), The 21st Chinese Conference on Complex Networks (CCCN 2025)
 - (04/2025) Top Innovative Talent in Basic Disciplines, Wuhan University
 - (03/2025) Lei Jun Education Foundation Travel Grant, Wuhan University
+- (07/2024) National Government Study Abroad Scholarship, China Scholarship Council
 - (12/2022) Excellent Graduate Student, Wuhan University
 - (10/2022) National Scholarship, Ministry of Education of P.R. China
 - (10/2021) Outstanding Graduate Freshman Scholarship, Wuhan University
@@ -25,7 +25,7 @@ nav_order: 3
 
 **Journal Reviewer**
 - Automatica
-- IEEE Transactions on Automatic Control (TAC)
+- IEEE Transactions on Automatic Control (TACON)
 - IEEE Transactions on Circuits and Systems II: Express Briefs (TCAS-II)
 
 **Conference Reviewer**
