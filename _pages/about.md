@@ -9,24 +9,14 @@ profile:
   image: bio_pic.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <a href="/assets/pdf/cv.pdf"><i class="ai ai-cv-square ai-2x"></i></a>
     <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/"><i class="fa-brands fa-linkedin fa-2x"></i></a>
     <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate"><i class="ai ai-google-scholar-square ai-2x"></i></a>
 
 news: true # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
-awards: true
+selected_papers: false # includes a list of papers marked as "selected={true}"
+awards: false
 social: false # includes social icons at the bottom of the page
 
-announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
 ---
 
 I am currently a Ph.D. student at the School of Mathematics and Statistics, Wuhan University, advised by Prof. [Xiaoqun Wu](https://csse.szu.edu.cn/pages/user/index?id=1303) (Shenzhen University). From Oct. 2024 to Sept. 2025, I was a Visiting Ph.D. student in the Division of Automatic Control at Linköping University, Sweden, hosted by Prof. [Claudio Altafini](https://liu.se/en/employee/claal20). Prior to my Ph.D. studies, I obtained my B.Sc. degree from the School of Mathematical Sciences at Anhui University.
