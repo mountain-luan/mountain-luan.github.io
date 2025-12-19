@@ -32,7 +32,7 @@ social: false # includes social icons at the bottom of the page
 
   <p>
     My research generally lies at the intersection of Control Theory and Network Science. 
-    Currently, I primarily focus on Opinion Dynamics. This involves modeling how individuals update their beliefs over social networks using control-theoretic tools, as well as conducting data-driven analysis based on real-world user interactions on social media.
+    Currently, I primarily focus on **Opinion Dynamics**. This involves modeling how individuals update their beliefs over social networks using *control-theoretic tools*, as well as conducting *data-driven analysis* based on real-world user interactions on social media.
     Previously, I also worked on network synchronization, link prediction, and influential spreader identification.
   </p>
   
