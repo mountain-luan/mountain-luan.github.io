@@ -54,9 +54,17 @@
 
     <div class="links" style="margin-top: 8px;">
       {% if entry.abstract %}<a class="abstract btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Abs</a>{% endif %}
-      {% if entry.bibtex_show %}<a class="bibtex btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Bib</a>{% endif %}
+      
+      {% if entry.bibtex_show %}<a class="bibtex btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Cite</a>{% endif %}
+      
       {% if entry.html %}<a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">HTML</a>{% endif %}
-      {% if entry.pdf %}<a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">PDF</a>{% endif %}
+      
+      {% if entry.pdf %}
+        <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">PDF</a>
+      {% endif %}
+      
+      {% if entry.supp %}<a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Supp</a>{% endif %}
+      {% if entry.code %}<a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Code</a>{% endif %}
     </div>
   </div>
 </div>
