@@ -1,9 +1,11 @@
 <footer class="sticky-bottom mt-5" role="contentinfo">
   <div class="container">
-    &copy; Copyright 2025 Yangyang Luan.
+    &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
     
-    <br>
-    Last updated: {{ "now" | date: "%B %d, %Y" }}.
+    {%- if site.last_updated -%}
+      <br>
+      Last updated: {{ "now" | date: "%B %d, %Y" }}.
+    {%- endif -%}
     
     <br>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
