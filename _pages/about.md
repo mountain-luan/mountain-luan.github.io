@@ -10,7 +10,7 @@ profile:
   image_circular: false
   more_info: >
     <div style="display: flex; align-items: center; justify-content: flex-start; margin-top: 10px;">
-      <a href="/assets/pdf/cv.pdf" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.4rem; text-decoration: none; margin-right: 12px; font-family: 'Roboto', sans-serif; line-height: 1; position: relative; top: -2px;">CV</a>
+      <a href="/assets/pdf/cv.pdf" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.4rem; text-decoration: none; margin-right: 12px; font-family: 'Roboto', sans-serif; line-height: 1;">CV</a>
       <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/" style="color: var(--global-theme-color); margin-right: 12px;"><i class="fa-brands fa-linkedin fa-2x"></i></a>
       <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--global-theme-color);"><i class="ai ai-google-scholar-square ai-2x"></i></a>
     </div>
