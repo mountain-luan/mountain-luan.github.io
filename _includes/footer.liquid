@@ -1,43 +1,14 @@
-{% if site.footer_fixed %}
-  <footer class="fixed-bottom" role="contentinfo">
-    <div class="container mt-0">
-      &copy; Copyright {{ site.time | date: '%Y' }}
-      {{ site.first_name }}
-      {{ site.middle_name }}
-      {{ site.last_name }}.
-      {% if site.impressum_path %}
-        <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-      {% endif %}
-      {% if site.last_updated %}
-        Last updated: {{ 'now' | date: '%B %d, %Y' }}.
-      {% endif %}
-      
-      <br>
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-      <span id="busuanzi_container_site_pv">
-        Total visits: <span id="busuanzi_value_site_pv"></span>
-      </span>
-      
-    </div>
-  </footer>
-{% else %}
-  <footer class="sticky-bottom mt-5" role="contentinfo">
-    {% if site.newsletter.enabled %}
-      {% include scripts/newsletter.liquid %}
+<footer class="sticky-bottom mt-5" role="contentinfo">
+  <div class="container">
+    &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
+    {% if site.last_updated %}
+      Last updated: {{ site.last_updated | date: '%B %d, %Y' }}.
     {% endif %}
-
-    <div class="container">
-      &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
-      {%- if site.last_updated -%}
-        Last updated: {{ site.last_updated | date: '%B %d, %Y' }}.
-      {%- endif -%}
-      
-      <br>
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-      <span id="busuanzi_container_site_pv">
-        Total visits: <span id="busuanzi_value_site_pv"></span>
-      </span>
-
-    </div>
-  </footer>
-{% endif %}
+    
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">
+      Total visits: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+</footer>
