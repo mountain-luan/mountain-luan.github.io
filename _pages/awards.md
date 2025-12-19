@@ -61,11 +61,11 @@ nav_order: 3
     <tbody>
       <tr>
         <td class="cv-date">Oct 2025</td>
-        <td class="cv-content"><strong>Best Student Paper Award (First Prize)</strong>, The 21st Chinese Conference on Complex Networks (CCCN 2025)</td>
+        <td class="cv-content">Best Student Paper Award (First Prize), The 21st Chinese Conference on Complex Networks (CCCN 2025)</td>
       </tr>
       <tr>
         <td class="cv-date">Apr 2025</td>
-        <td class="cv-content"><strong>Top Innovative Talent in Basic Disciplines</strong>, Wuhan University</td>
+        <td class="cv-content">Top Innovative Talent in Basic Disciplines, Wuhan University</td>
       </tr>
       <tr>
         <td class="cv-date">Mar 2025</td>
