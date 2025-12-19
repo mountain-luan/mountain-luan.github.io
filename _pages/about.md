@@ -8,6 +8,8 @@ profile:
   align: left
   image: bio_pic.png
   image_circular: false
+  image_width: 25%
+  
   more_info: >
     <div style="display: flex; align-items: center; justify-content: flex-start; margin-top: 10px;">
       <a href="/assets/pdf/cv.pdf" target="_blank" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.4rem; text-decoration: none; margin-right: 12px; font-family: 'Roboto', sans-serif; line-height: 1;">CV</a>
