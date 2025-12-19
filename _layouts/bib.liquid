@@ -1,5 +1,8 @@
 ---
 ---
+{% assign ob = "{" %}
+{% assign cb = "}" %}
+
 <div class="row" style="margin-bottom: 25px;">
   <div id="{{ entry.key }}" class="col-sm-12" style="border-left: 3px solid var(--global-theme-color); padding-left: 20px; margin-left: 5px;">
     
@@ -75,17 +78,17 @@
     </div>
 
     {% if entry.bibtex_show %}
-      {% capture entry_bibtex %}@{{ entry.type }}{{ "{" }}{{ entry.key }},
-  title = {{ "{" }}{{ entry.title }}{{ "}" }},
-  author = {{ "{" }}{% for author in entry.author_array %}{% assign clean_last = author.last | remove: "*" %}{{ clean_last }}, {{ author.first }}{% unless forloop.last %} and {% endunless %}{% endfor %}{{ "}" }}{% if entry.journal %},
-  journal = {{ "{" }}{{ entry.journal }}{{ "}" }}{% endif %}{% if entry.booktitle %},
-  booktitle = {{ "{" }}{{ entry.booktitle }}{{ "}" }}{% endif %}{% if entry.volume %},
-  volume = {{ "{" }}{{ entry.volume }}{{ "}" }}{% endif %}{% if entry.number %},
-  number = {{ "{" }}{{ entry.number }}{{ "}" }}{% endif %}{% if entry.pages %},
-  pages = {{ "{" }}{{ entry.pages }}{{ "}" }}{% endif %}{% if entry.year %},
-  year = {{ "{" }}{{ entry.year }}{{ "}" }}{% endif %}{% if entry.month %},
-  month = {{ "{" }}{{ month_full }}{{ "}" }}{% endif %}{% if entry.doi %},
-  doi = {{ "{" }}{{ entry.doi }}{{ "}" }}{% endif %}
+      {% capture entry_bibtex %}@{{ entry.type }}{{ ob }}{{ entry.key }},
+  title = {{ ob }}{{ entry.title }}{{ cb }},
+  author = {{ ob }}{% for author in entry.author_array %}{% assign clean_last = author.last | remove: "*" %}{{ clean_last }}, {{ author.first }}{% unless forloop.last %} and {% endunless %}{% endfor %}{{ cb }}{% if entry.journal %},
+  journal = {{ ob }}{{ entry.journal }}{{ cb }}{% endif %}{% if entry.booktitle %},
+  booktitle = {{ ob }}{{ entry.booktitle }}{{ cb }}{% endif %}{% if entry.volume %},
+  volume = {{ ob }}{{ entry.volume }}{{ cb }}{% endif %}{% if entry.number %},
+  number = {{ ob }}{{ entry.number }}{{ cb }}{% endif %}{% if entry.pages %},
+  pages = {{ ob }}{{ entry.pages }}{{ cb }}{% endif %}{% if entry.year %},
+  year = {{ ob }}{{ entry.year }}{{ cb }}{% endif %}{% if entry.month %},
+  month = {{ ob }}{{ month_full }}{{ cb }}{% endif %}{% if entry.doi %},
+  doi = {{ ob }}{{ entry.doi }}{{ cb }}{% endif %}
 }
 {% endcapture %}
       
