@@ -1,53 +1,54 @@
 ---
 layout: page
-permalink: /awards/
 title: Awards & Services
+permalink: /awards/
 description: 
 nav: true
 nav_order: 3
 ---
 
-### Awards
+<h3>Awards</h3>
+<div class="table-responsive" style="margin-top: 20px;">
+  <table class="table table-sm table-borderless">
+    <tbody>
+      <tr>
+        <th scope="row" style="width: 15%; color: var(--global-theme-color);">Oct. 2025</th>
+        <td><strong>Best Student Paper Award (First Prize)</strong><br><span style="font-size: 0.9em; color: #666;">The 21st Chinese Conference on Complex Networks (CCCN 2025)</span></td>
+      </tr>
+      <tr>
+        <th scope="row" style="color: var(--global-theme-color);">Apr. 2025</th>
+        <td><strong>Top Innovative Talent in Basic Disciplines</strong><br><span style="font-size: 0.9em; color: #666;">Wuhan University</span></td>
+      </tr>
+      <tr>
+        <th scope="row" style="color: var(--global-theme-color);">Jul. 2024</th>
+        <td><strong>National Government Study Abroad Scholarship</strong><br><span style="font-size: 0.9em; color: #666;">China Scholarship Council</span></td>
+      </tr>
+      <tr>
+        <th scope="row" style="color: var(--global-theme-color);">Dec. 2022</th>
+        <td><strong>National Scholarship</strong><br><span style="font-size: 0.9em; color: #666;">Ministry of Education of P.R. China</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-- (10/2025) Best Student Paper Award (First Prize), The 21st Chinese Conference on Complex Networks (CCCN 2025)
-- (04/2025) Top Innovative Talent in Basic Disciplines, Wuhan University
-- (03/2025) Lei Jun Education Foundation Travel Grant, Wuhan University
-- (07/2024) National Government Study Abroad Scholarship, China Scholarship Council
-- (12/2022) Excellent Graduate Student, Wuhan University
-- (10/2022) National Scholarship, Ministry of Education of P.R. China
-- (10/2021) Outstanding Graduate Freshman Scholarship, Wuhan University
-- (05/2021) Graduate With Honors, Anhui University
-- (10/2020) National Encouragement Scholarship, Ministry of Education of P.R. China
-- (10/2019) Outstanding Student Scholarship, Anhui University
-- (10/2018) National Encouragement Scholarship, Ministry of Education of P.R. China
+<hr style="margin: 30px 0;">
 
-### Academic Services
+<h3>Academic Services</h3>
 
-**Journal Reviewer**
-- Automatica
-- IEEE Transactions on Automatic Control (TACON)
-- IEEE Transactions on Circuits and Systems II: Express Briefs (TCAS-II)
-
-**Conference Reviewer**
-- European Control Conference (ECC)
-
-### Talks & Presentations
-
-- (10/2025) The 21st Chinese Conference on Complex Networks (CCCN 2025), Hangzhou, China
-  - Title: *"Coevolutionary dynamics of multidimensional opinions over coopetitive networks"*
-- (06/2025) Swedish Control Conference (Reglermöte 2025), Lund, Sweden
-  - Title: *"Combining homophily in interaction and opinion spaces: A bounded confidence approach"*
-- (05/2024) The 20th China Networks Science Forum (CNetSci 2024), Beijing, China
-  - Title: *"Coevolutionary dynamics of multidimensional opinions over coopetitive networks"*
-- (11/2023) The 19th Chinese Conference on Complex Networks (CCCN 2023), Guilin, China
-  - Title: *"Coevolutionary behaviors of multidimensional opinion dynamics on signed networks"*
-- (05/2023) The 19th China Networks Science Forum (CNetSci 2023), Chongqing, China
-  - Title: *"Network synchronizability optimization algorithm based on link prediction"*
-- (10/2021) The 17th Chinese Conference on Complex Networks (CCCN 2021), Beijing, China
-  - Title: *"Identification algorithm of influential spreaders in complex networks"*
-
-### Events Attended
-
-- (06/2025) The 23rd European Control Conference (ECC 2025), Thessaloniki, Greece
-- (04/2024) The Workshop on Complex Systems Science and Innovative Applications, Hefei, China
-- (01/2024) The 3rd Academic Workshop on Network Science and Mathematics, Shenzhen, China
+<div class="row">
+  <div class="col-sm-12">
+    <h5 style="margin-top: 15px; font-weight: bold;">Journal Reviewer</h5>
+    <ul>
+      <li><em>Automatica</em></li>
+      <li><em>IEEE Transactions on Automatic Control (TAC)</em></li>
+      <li><em>IEEE Transactions on Circuits and Systems II (TCAS-II)</em></li>
+    </ul>
+  </div>
+  
+  <div class="col-sm-12">
+    <h5 style="margin-top: 15px; font-weight: bold;">Conference Reviewer</h5>
+    <ul>
+      <li>European Control Conference (ECC)</li>
+    </ul>
+  </div>
+</div>
