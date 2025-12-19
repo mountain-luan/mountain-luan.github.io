@@ -2,13 +2,14 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Yangyang Luan # the website title (if blank, full name will be used instead)
 first_name: Yangyang
 # middle_name: R.
 last_name: Luan
 email: luanyy_1704@whu.edu.cn
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+footer_text: ""
 keywords: yangyang.luan # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🌱 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -69,13 +70,13 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # -----------------------------------------------------------------------------
 
 acm_id: # your dl.acm.org/profile/id
-blogger_url: https://www.zhihu.com/people/yu-chang-qian
+blogger_url: 
 bluesky_url: # your bluesky URL
 dblp_url: # your DBLP profile url
 discord_id: # your discord id (18-digit unique numerical identifier)
 facebook_id: # your facebook id
 flickr_id: # your flickr id
-github_username: yu-changqian
+github_username: mountain-luan
 gitlab_username: # your GitLab user name
 ieee_id: # your ieeexplore.ieee.org/author/id
 instagram_id: # your instagram id
@@ -92,7 +93,7 @@ pinterest_id: # your pinterest id
 publons_id: # your ID on Publons
 quora_username: # your Quora username
 research_gate_profile: # your profile on ResearchGate
-scholar_userid: Hv-vj2sAAAAJ # your Google Scholar ID
+scholar_userid:  # your Google Scholar ID
 scopus_id: # your profile on Scopus
 semanticscholar_id: # your Semantic Scholar ID
 spotify_id: # your spotify id
@@ -104,7 +105,7 @@ whatsapp_number: # your WhatsApp number (full phone number in international form
 wikidata_id: # your wikidata id
 wikipedia_id: # your wikipedia id (Case sensitive)
 work_url: # work page URL
-x_username: ChangqianYu
+x_username: 
 youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
 zotero_username: # your zotero username
 
