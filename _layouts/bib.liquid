@@ -52,24 +52,15 @@
     {% endif %}
 
     <div class="periodical" style="font-size: 0.95rem; color: var(--global-text-color-light);">
-      <em>{{ entry.journal }}{{ entry.booktitle }}</em>{% if entry.volume %}, vol. {{ entry.volume }}{% endif %}{% if entry.pages %}, pp. {{ entry.pages }}{% endif %}{% if entry.year %}, {{ month_full }} {{ entry.year }}{% endif %}
+      <em>{{ entry.journal }}{{ entry.booktitle }}</em>{% if entry.volume %}, vol. {{ entry.volume }}{% endif %}{% if entry.pages %}, pp. {{ entry.pages }}{% endif %}{% if entry.year %}, {{ month_full }} {{ entry.year }}{% endif %}{% if entry.note %}, {{ entry.note }}{% endif %}
     </div>
 
-    <div class="annotations" style="margin-top: 3px; margin-bottom: 3px;">
-      
-      {% if entry.note %}
-        <div style="font-size: 0.9rem; font-weight: bold; color: var(--global-theme-color);">
-          {{ entry.note }}
-        </div>
-      {% endif %}
+    {% if entry.award %}
+      <div style="font-size: 0.9rem; color: #d32f2f; margin-top: 2px;">
+        <i class="fa-solid fa-trophy" style="margin-right: 5px;"></i>{{ entry.award }}
+      </div>
+    {% endif %}
 
-      {% if entry.award %}
-        <div style="font-size: 0.9rem; font-weight: 500; color: #d32f2f;">
-          <i class="fa-solid fa-trophy" style="margin-right: 5px;"></i>{{ entry.award }}
-        </div>
-      {% endif %}
-
-    </div>
     <div class="links" style="margin-top: 5px;">
       {% if entry.pdf %}
         {% if entry.pdf contains '://' %}
