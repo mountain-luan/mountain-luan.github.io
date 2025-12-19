@@ -9,10 +9,10 @@ profile:
   image: bio_pic.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <a href="/assets/pdf/cv.pdf"><i class="ai ai-cv-square ai-2x"></i></a>
+    <a href="/assets/pdf/cv.pdf" style="text-decoration:none; font-weight:900; font-size:1.6rem; vertical-align:middle; margin-right:12px; font-family: sans-serif; color:inherit;">CV</a>
     <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/"><i class="fa-brands fa-linkedin fa-2x"></i></a>
     <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate"><i class="ai ai-google-scholar-square ai-2x"></i></a>
-
+   
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 awards: true
