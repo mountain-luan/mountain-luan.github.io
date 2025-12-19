@@ -8,32 +8,50 @@ nav_order: 3
 ---
 
 <style>
+  /* 日期列样式 */
   .cv-date {
     text-align: right;
-    width: 85px;       /* 限制日期列宽度，确保对齐 */
+    width: 85px;
     min-width: 85px;
-    padding-right: 15px !important; /* 日期和内容之间的空隙 */
-    color: #666;       /* 灰色日期，不喧宾夺主 */
+    padding-right: 15px !important;
+    color: #666;
     font-weight: normal;
-    white-space: nowrap; /* 防止日期换行 */
-    padding-top: 2px !important;    /* 【关键】压缩上方间距 */
-    padding-bottom: 2px !important; /* 【关键】压缩下方间距 */
-    vertical-align: top !important; /* 顶端对齐 */
-  }
-  .cv-content {
-    padding-top: 2px !important;    /* 【关键】压缩上方间距 */
-    padding-bottom: 2px !important; /* 【关键】压缩下方间距 */
+    white-space: nowrap;
+    padding-top: 3px !important;    /* 稍微增加一点点间距，不那么挤 */
+    padding-bottom: 3px !important;
     vertical-align: top !important;
   }
-  /* 调整标题间距，更紧凑 */
+  .cv-content {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    vertical-align: top !important;
+  }
+  /* 标题样式 */
   h3 {
-    margin-top: 25px !important; 
-    margin-bottom: 10px !important; 
+    margin-top: 30px !important; 
+    margin-bottom: 15px !important; 
     font-size: 1.4rem;
   }
+  /* 分割线 */
   .section-divider {
-    margin: 20px 0;
+    margin: 25px 0;
     border-top: 1px solid #eee;
+  }
+  /* 专门针对 Services 的列表样式 */
+  .service-list {
+    margin-bottom: 15px;
+    padding-left: 20px; /* 控制圆点缩进 */
+  }
+  .service-list li {
+    margin-bottom: 4px; /* 条目之间的距离，适中 */
+    line-height: 1.5;
+  }
+  .service-header {
+    font-weight: bold; 
+    font-size: 1.05rem; 
+    color: var(--global-theme-color); /* 跟随主题色(Royal Blue) */
+    margin-top: 15px;
+    margin-bottom: 8px;
   }
 </style>
 
@@ -92,26 +110,17 @@ nav_order: 3
 <div class="section-divider"></div>
 
 <h3>Academic Services</h3>
-<div class="table-responsive">
-  <table class="table table-sm table-borderless">
-    <tbody>
-      <tr>
-        <td class="cv-date" style="font-weight: bold; color: var(--global-theme-color);">Reviewer</td>
-        <td class="cv-content">
-          <em>Automatica</em><br>
-          <em>IEEE Transactions on Automatic Control (TAC)</em><br>
-          <em>IEEE Transactions on Circuits and Systems II (TCAS-II)</em>
-        </td>
-      </tr>
-      <tr style="height: 8px;"></tr> 
-      <tr>
-        <td class="cv-date" style="font-weight: bold; color: var(--global-theme-color);">Program</td>
-        <td class="cv-content">
-          European Control Conference (ECC)
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div style="font-size: 0.95rem;"> <div class="service-header">Journal Reviewer</div>
+  <ul class="service-list">
+    <li>Automatica</li>
+    <li>IEEE Transactions on Automatic Control (TAC)</li>
+    <li>IEEE Transactions on Circuits and Systems II (TCAS-II)</li>
+  </ul>
+
+  <div class="service-header">Conference Reviewer</div>
+  <ul class="service-list">
+    <li>European Control Conference (ECC)</li>
+  </ul>
 </div>
 
 <div class="section-divider"></div>
