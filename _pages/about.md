@@ -4,13 +4,26 @@ permalink: /
 title: About
 description: >
   PhD student @ Wuhan University, Wuhan City, Hubei Province, China
+
+# 1. 个人资料设置 (保持原模板样式)
 profile:
-  align: right
+  align: right          # 照片在右边 (如果不喜欢可以改为 left)
   image: bio_pic.png
-  image_circular: false
-news: true
+  image_circular: false # 方形照片
+  
+  # 2. 这里是放 CV、Email、Scholar 图标的最佳位置
+  more_info: >
+    <div style="margin-top: 5px;">
+      <a href="/assets/pdf/cv.pdf" target="_blank" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.2rem; margin-right: 10px; text-decoration: none; font-family: 'Roboto', sans-serif;">CV</a>
+      <a href="mailto:luanyy_1704@whu.edu.cn" style="color: var(--global-theme-color); margin-right: 10px;" title="Email"><i class="fa-solid fa-envelope fa-xl"></i></a>
+      <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/" style="color: var(--global-theme-color); margin-right: 10px;"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+      <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--global-theme-color);"><i class="ai ai-google-scholar-square ai-xl"></i></a>
+    </div>
+
+# 3. 关键设置：关闭自动 News，我们在正文中手动加，以便控制字号
+news: false  
 selected_papers: false
-social: true
+social: true  # 开启页面底部的社交图标
 ---
 
 <div class="clearfix" style="text-align: justify;">
@@ -29,16 +42,11 @@ social: true
   <p>
     If you are interested in my research topics, you are more than welcome to contact me via email at <code>luanyy_1704@whu.edu.cn</code> (preferred) or <code>yyluan1999@gmail.com</code>. My office is located at the School of Mathematics and Statistics, Wuhan University.
   </p>
-  
-  <div style="margin-top: 20px; margin-bottom: 30px;">
-      <div style="display: flex; align-items: center; justify-content: flex-start;">
-        <a href="/assets/pdf/cv.pdf" target="_blank" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.4rem; text-decoration: none; margin-right: 15px; font-family: 'Roboto', sans-serif; line-height: 1;">CV</a>
-        
-        <a href="mailto:luanyy_1704@whu.edu.cn" style="color: var(--global-theme-color); margin-right: 15px;" title="Email"><i class="fa-solid fa-envelope fa-2x"></i></a>
-        
-        <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/" style="color: var(--global-theme-color); margin-right: 15px;"><i class="fa-brands fa-linkedin fa-2x"></i></a>
-        
-        <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--global-theme-color);"><i class="ai ai-google-scholar-square ai-2x"></i></a>
-     </div>
-  </div>
 </div>
+
+{% if site.announcements.enabled %}
+  <h2 style="margin-top: 30px; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px; font-size: 1.5rem; font-weight: bold; color: inherit;">
+    <a href="{{ '/news/' | relative_url }}" style="color: inherit; text-decoration: none;">News</a>
+  </h2>
+  {% include news.liquid limit=true %}
+{% endif %}
