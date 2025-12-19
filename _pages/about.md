@@ -6,7 +6,7 @@ subtitle: PhD student @ Wuhan University, Wuhan City, Hubei Province, China
 
 profile:
   align: left
-  image: bio_pic.png
+  image: bio_pic.jpg
   image_circular: false
   image_width: 25%
   
