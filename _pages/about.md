@@ -26,3 +26,17 @@ social: false # includes social icons at the bottom of the page
 I am currently a Ph.D. student at the School of Mathematics and Statistics, Wuhan University, advised by Prof. [Xiaoqun Wu](https://csse.szu.edu.cn/pages/user/index?id=1303) (Shenzhen University). From Oct. 2024 to Sept. 2025, I was a Visiting Ph.D. student in the Division of Automatic Control at Linköping University, Sweden, hosted by Prof. [Claudio Altafini](https://liu.se/en/employee/claal20). Prior to my Ph.D. studies, I obtained my B.Sc. degree from the School of Mathematical Sciences at Anhui University.
 
 My research interests lie in opinion dynamics on complex networks and multi-agent systems. I am particularly interested in the intersection of control theory and data-driven approaches in these fields.
+
+
+I am currently a Ph.D. candidate at the School of Mathematics and Statistics, Wuhan University, advised by Prof. [Xiaoqun Wu](https://csse.szu.edu.cn/pages/user/index?id=1303) (Shenzhen University). From Oct. 2024 to Sep. 2025, I was a Visiting Ph.D. student in the Division of Automatic Control at Linköping University, Sweden, hosted by Prof. [Claudio Altafini](https://liu.se/en/employee/claal20). Prior to my Ph.D. studies, I obtained my B.Sc. degree from the School of Mathematical Sciences at Anhui University.
+
+My research interests generally lie in the intersection of Control Theory, Network Science, and Multi-agent Systems. Specifically:
+* **Opinion Dynamics**: multidimensional opinions, signed networks.
+* **Coevolutionary Dynamics**: coupling of network structure and states.
+* **Data-driven Approaches**: identifying influential spreaders.
+
+***
+
+**Contact:**
+* **Email**: luanyy_1704@whu.edu.cn
+* **Office**: Room 313, Lei Jun Science and Technology Building, Wuhan University, China
