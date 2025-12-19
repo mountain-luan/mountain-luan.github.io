@@ -29,5 +29,3 @@ My research generally lies at the intersection of Control Theory and Network Sci
 
 If you are interested in my research topics, you are more than welcome to contact me via email at luanyy_1704@whu.edu.cn (preferred) or yyluan1999@gmail.com. My office is located at the School of Mathematics and Statistics, Wuhan University.
 
-
-{% include news.liquid limit=true %}
