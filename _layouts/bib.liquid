@@ -53,7 +53,6 @@
     </div>
 
     <div class="links" style="margin-top: 8px;">
-      
       {% if entry.pdf %}
         {% if entry.pdf contains '://' %}
           <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="border: 1px solid #ddd; padding: 2px 8px;">PDF</a>
@@ -75,29 +74,31 @@
       {% if entry.code %}<a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Code</a>{% endif %}
     </div>
 
+    {% if entry.bibtex_show %}
+      {% capture entry_bibtex %}@{{ entry.type }}{{ "{" }}{{ entry.key }},
+  title = {{ "{" }}{{ entry.title }}{{ "}" }},
+  author = {{ "{" }}{% for author in entry.author_array %}{% assign clean_last = author.last | remove: "*" %}{{ clean_last }}, {{ author.first }}{% unless forloop.last %} and {% endunless %}{% endfor %}{{ "}" }}{% if entry.journal %},
+  journal = {{ "{" }}{{ entry.journal }}{{ "}" }}{% endif %}{% if entry.booktitle %},
+  booktitle = {{ "{" }}{{ entry.booktitle }}{{ "}" }}{% endif %}{% if entry.volume %},
+  volume = {{ "{" }}{{ entry.volume }}{{ "}" }}{% endif %}{% if entry.number %},
+  number = {{ "{" }}{{ entry.number }}{{ "}" }}{% endif %}{% if entry.pages %},
+  pages = {{ "{" }}{{ entry.pages }}{{ "}" }}{% endif %}{% if entry.year %},
+  year = {{ "{" }}{{ entry.year }}{{ "}" }}{% endif %}{% if entry.month %},
+  month = {{ "{" }}{{ month_full }}{{ "}" }}{% endif %}{% if entry.doi %},
+  doi = {{ "{" }}{{ entry.doi }}{{ "}" }}{% endif %}
+}
+{% endcapture %}
+      
+      <div class="bibtex hidden">
+        {% highlight bibtex %}{{ entry_bibtex }}{% endhighlight %}
+      </div>
+    {% endif %}
+
     {% if entry.abstract %}
       <div class="abstract hidden">
         <p>{{ entry.abstract }}</p>
       </div>
     {% endif %}
-    
-    {% if entry.bibtex_show %}
-      <div class="bibtex hidden">
-        {% highlight bibtex %}
-@{{ entry.type }}{{ "{" }}{{ entry.key }},
-  title = {{ "{" }}{{ entry.title }}{{ "}" }},
-  author = {{ "{" }}{% for author in entry.author_array %}{% assign clean_last = author.last | remove: "*" %}{{ clean_last }}, {{ author.first }}{% unless forloop.last %} and {% endunless %}{% endfor %}{{ "}" }},
-  {% if entry.journal %}journal = {{ "{" }}{{ entry.journal }}{{ "}" }},{% endif %}
-  {% if entry.booktitle %}booktitle = {{ "{" }}{{ entry.booktitle }}{{ "}" }},{% endif %}
-  {% if entry.volume %}volume = {{ "{" }}{{ entry.volume }}{{ "}" }},{% endif %}
-  {% if entry.number %}number = {{ "{" }}{{ entry.number }}{{ "}" }},{% endif %}
-  {% if entry.pages %}pages = {{ "{" }}{{ entry.pages }}{{ "}" }},{% endif %}
-  {% if entry.year %}year = {{ "{" }}{{ entry.year }}{{ "}" }},{% endif %}
-  {% if entry.month %}month = {{ "{" }}{{ month_full }}{{ "}" }},{% endif %}
-  {% if entry.doi %}doi = {{ "{" }}{{ entry.doi }}{{ "}" }},{% endif %}
-}
-        {% endhighlight %}
-      </div>
-    {% endif %}
+
   </div>
 </div>
