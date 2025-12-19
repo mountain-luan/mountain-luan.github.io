@@ -73,9 +73,6 @@
       {% if entry.abstract %}<a class="abstract btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Abs</a>{% endif %}
       {% if entry.supp %}<a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Supp</a>{% endif %}
       {% if entry.code %}<a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Code</a>{% endif %}
-      {% if entry.poster %}<a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Poster</a>{% endif %}
-      {% if entry.slides %}<a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Slides</a>{% endif %}
-      {% if entry.website %}<a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; padding: 2px 8px;">Website</a>{% endif %}
     </div>
 
     {% if entry.abstract %}
@@ -86,7 +83,20 @@
     
     {% if entry.bibtex_show %}
       <div class="bibtex hidden">
-        {% highlight bibtex %}{{ entry.bibtex }}{% endhighlight %}
+        {% highlight bibtex %}
+@{{ entry.type }}{{ "{" }}{{ entry.key }},
+  title = {{ "{" }}{{ entry.title }}{{ "}" }},
+  author = {{ "{" }}{% for author in entry.author_array %}{% assign clean_last = author.last | remove: "*" %}{{ clean_last }}, {{ author.first }}{% unless forloop.last %} and {% endunless %}{% endfor %}{{ "}" }},
+  {% if entry.journal %}journal = {{ "{" }}{{ entry.journal }}{{ "}" }},{% endif %}
+  {% if entry.booktitle %}booktitle = {{ "{" }}{{ entry.booktitle }}{{ "}" }},{% endif %}
+  {% if entry.volume %}volume = {{ "{" }}{{ entry.volume }}{{ "}" }},{% endif %}
+  {% if entry.number %}number = {{ "{" }}{{ entry.number }}{{ "}" }},{% endif %}
+  {% if entry.pages %}pages = {{ "{" }}{{ entry.pages }}{{ "}" }},{% endif %}
+  {% if entry.year %}year = {{ "{" }}{{ entry.year }}{{ "}" }},{% endif %}
+  {% if entry.month %}month = {{ "{" }}{{ month_full }}{{ "}" }},{% endif %}
+  {% if entry.doi %}doi = {{ "{" }}{{ entry.doi }}{{ "}" }},{% endif %}
+}
+        {% endhighlight %}
       </div>
     {% endif %}
   </div>
