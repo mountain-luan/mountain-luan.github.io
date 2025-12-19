@@ -3,7 +3,7 @@
 <div class="row" style="margin-bottom: 2rem;">
   <div id="{{ entry.key }}" class="col-sm-12" style="border-left: 2px solid var(--global-theme-color); padding-left: 1.5rem; margin-left: 5px;">
     
-    <div class="title" style="font-weight: bold; font-size: 1.1rem; line-height: 1.4; margin-bottom: 0.4rem;">
+    <div class="title" style="font-weight: bold; font-size: 1.1rem; line-height: 1.4; margin-bottom: 0.5rem;">
       {{ entry.title }}
     </div>
     
@@ -24,6 +24,63 @@
           {% endif %}
         {%- endif -%}
         
-        {% assign coauthor_url = null %}
-        {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
-        {% if site.data.coauthors[clean_last_name] %}
+        {%- if forloop.length > 1 -%}
+          {% if forloop.first == false %}, {% endif %}
+          {% if forloop.last and author_array_limit == author_array_size %}and {% endif %}
+        {% endif %}
+
+        {%- if author_is_self -%}
+          <em>{{ author.first }} {{ author_last_html }}</em>
+        {%- else -%}
+          {{ author.first }} {{ author_last_html }}
+        {%- endif -%}
+      {% endfor %}
+    </div>
+
+    {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
+    {% if entry.type == 'article' %}
+      {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
+    {% elsif proceedings contains entry.type %}
+      {% capture entrytype %}<em>In {{ entry.booktitle }}</em>{% endcapture %}
+    {% else %}
+      {% capture entrytype %}{% endcapture %}
+    {% endif %}
+
+    {% if entry.volume %}{% capture entrytype %}{{ entrytype }}, vol. {{ entry.volume }}{% endcapture %}{% endif %}
+    {% if entry.number %}{% capture entrytype %}{{ entrytype }}, no. {{ entry.number }}{% endcapture %}{% endif %}
+    {% if entry.pages %}{% capture entrytype %}{{ entrytype }}, pp. {{ entry.pages }}{% endcapture %}{% endif %}
+
+    {% assign month_full = entry.month %}
+    {% if entry.month %}
+      {% assign m_down = entry.month | downcase %}
+      {% case m_down %}
+        {% when 'jan' %}{% assign month_full = 'January' %}
+        {% when 'feb' %}{% assign month_full = 'February' %}
+        {% when 'mar' %}{% assign month_full = 'March' %}
+        {% when 'apr' %}{% assign month_full = 'April' %}
+        {% when 'may' %}{% assign month_full = 'May' %}
+        {% when 'jun' %}{% assign month_full = 'June' %}
+        {% when 'jul' %}{% assign month_full = 'July' %}
+        {% when 'aug' %}{% assign month_full = 'August' %}
+        {% when 'sep' %}{% assign month_full = 'September' %}
+        {% when 'oct' %}{% assign month_full = 'October' %}
+        {% when 'nov' %}{% assign month_full = 'November' %}
+        {% when 'dec' %}{% assign month_full = 'December' %}
+      {% endcase %}
+    {% endif %}
+
+    <div class="periodical" style="color: var(--global-text-color-light); font-size: 0.95rem;">
+      {{ entrytype }}{% if entry.year %}, {{ month_full }} {{ entry.year }}{% endif %}
+    </div>
+
+    <div class="links" style="margin-top: 0.8rem;">
+      {% if entry.abstract %}<a class="abstract btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; margin-right: 5px;">Abs</a>{% endif %}
+      {% if entry.bibtex_show %}<a class="bibtex btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; margin-right: 5px;">Bib</a>{% endif %}
+      {% if entry.html %}<a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; margin-right: 5px;">HTML</a>{% endif %}
+      {% if entry.pdf %}<a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" style="border: 1px solid #ddd; margin-right: 5px;">PDF</a>{% endif %}
+    </div>
+
+    {% if entry.abstract %}<div class="abstract hidden"><p>{{ entry.abstract }}</p></div>{% endif %}
+    {% if entry.bibtex_show %}<div class="bibtex hidden">{% highlight bibtex %}{{ entry.bibtex }}{% endhighlight %}</div>{% endif %}
+  </div>
+</div>
