@@ -7,11 +7,13 @@ subtitle: PhD student @ Wuhan University, Wuhan City, Hubei Province, China
 profile:
   align: left
   image: bio_pic.png
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <a href="/assets/pdf/cv.pdf" style="text-decoration:none; font-weight:900; font-size:1.6rem; vertical-align:middle; margin-right:12px; font-family: sans-serif; color:inherit;">CV</a>
-    <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/"><i class="fa-brands fa-linkedin fa-2x"></i></a>
-    <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate"><i class="ai ai-google-scholar-square ai-2x"></i></a>
+    <div style="display: flex; align-items: center; justify-content: flex-start; margin-top: 10px;">
+      <a href="/assets/pdf/cv.pdf" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.4rem; text-decoration: none; margin-right: 12px; font-family: 'Roboto', sans-serif; line-height: 1;">CV</a>
+      <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/" style="color: var(--global-theme-color); margin-right: 12px;"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+      <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--global-theme-color);"><i class="ai ai-google-scholar-square ai-2x"></i></a>
+    </div>
    
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
