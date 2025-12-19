@@ -52,7 +52,8 @@
     {% endif %}
 
     <div class="periodical" style="font-size: 0.95rem; color: var(--global-text-color-light);">
-      <em>{{ entry.journal }}{{ entry.booktitle }}</em>{% if entry.volume %}, vol. {{ entry.volume }}{% endif %}{% if entry.pages %}, pp. {{ entry.pages }}{% endif %}{% if entry.year %}, {{ month_full }} {{ entry.year }}{% endif %}{% if entry.note %}, {{ entry.note }}{% endif %}
+      <em>{{ entry.journal }}{{ entry.booktitle }}</em>{% if entry.volume %}, vol. {{ entry.volume }}{% endif %}{% if entry.pages %}, pp. {{ entry.pages }}{% endif %}{% if entry.year %}, {{ month_full }} {{ entry.year }}{% endif %}
+      {% if entry.note %} <span style="color: var(--global-theme-color);">({{ entry.note }})</span>{% endif %}
     </div>
 
     {% if entry.award %}
