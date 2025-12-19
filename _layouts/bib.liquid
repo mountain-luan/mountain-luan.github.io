@@ -3,7 +3,10 @@
 <div class="row">
   <div id="{{ entry.key }}" class="col-sm-12">
     
-    <div class="title">{{ entry.title }}</div>
+    <div class="title" style="display: flex; align-items: baseline;">
+      <span style="margin-right: 8px; font-size: 0.8em; color: var(--global-text-color-light);">●</span>
+      <span>{{ entry.title }}</span>
+    </div>
     
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
@@ -115,8 +118,27 @@
       {% capture entrytype %}{{ entrytype }}{{ ", pp. " }}{{ entry.pages }}{% endcapture %}
     {% endif %}
 
+    {% assign month_full = entry.month %}
     {% if entry.month %}
-      {% capture entrymonth %}{{ " " }}{{ entry.month | capitalize }}{% endcapture %}
+      {% assign m_down = entry.month | downcase %}
+      {% case m_down %}
+        {% when 'jan' %}{% assign month_full = 'January' %}
+        {% when 'feb' %}{% assign month_full = 'February' %}
+        {% when 'mar' %}{% assign month_full = 'March' %}
+        {% when 'apr' %}{% assign month_full = 'April' %}
+        {% when 'may' %}{% assign month_full = 'May' %}
+        {% when 'jun' %}{% assign month_full = 'June' %}
+        {% when 'jul' %}{% assign month_full = 'July' %}
+        {% when 'aug' %}{% assign month_full = 'August' %}
+        {% when 'sep' %}{% assign month_full = 'September' %}
+        {% when 'oct' %}{% assign month_full = 'October' %}
+        {% when 'nov' %}{% assign month_full = 'November' %}
+        {% when 'dec' %}{% assign month_full = 'December' %}
+      {% endcase %}
+    {% endif %}
+
+    {% if month_full %}
+      {% capture entrymonth %}{{ " " }}{{ month_full }}{% endcapture %}
     {% endif %}
     {% if entry.year %}
       {% capture entryyear %}{{ " " }}{{ entry.year }}{% endcapture %}
