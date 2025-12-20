@@ -148,42 +148,22 @@
   <link defer rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
 {% endif %}
 
-
 <style>
-  /* 1. 强制电脑端布局：图片立即左浮动，锁定宽度 */
-  /* 只要屏幕宽度大于 768px，浏览器解析到这里时，就立刻知道图片在左边 */
-  @media (min-width: 769px) {
-    .profile {
-      width: 25% !important;
-      max-width: 250px;
-      margin-right: 30px;
-      float: left !important; /* 核心：让文字一开始就绕着它走，不要先换行再跳回来 */
-    }
+  /* 1. 移动端预留高度 (标准 Bootstrap 导航栏高度约为 56px) */
+  body {
+    padding-top: 56px !important;
   }
 
-  /* 2. 强制移动端布局：图片居中，不浮动 */
-  @media (max-width: 768px) {
-    .profile {
-      width: 100% !important;
-      max-width: 100% !important;
-      float: none !important;
-      display: block !important;
-      margin-bottom: 25px !important;
-    }
-    .profile img {
-      width: 40% !important;
-      max-width: 160px !important;
-      margin: 0 auto !important;
-      display: block;
-    }
-    /* 修复移动端图标对齐 */
-    .profile .more-info div {
-       justify-content: center !important;
+  /* 2. 电脑端预留高度 (电脑端导航栏通常更高，约为 70px-80px) */
+  /* 这里设置一个稍微宽裕的值，确保内容不会贴着导航栏 */
+  @media (min-width: 768px) {
+    body {
+      padding-top: 70px !important; 
     }
   }
-
-  /* 3. 锁定容器宽度 (防止滚动条出现导致的水平微小位移) */
+  
+  /* 3. 防止滚动条出现导致的水平轻微位移 (可选，顺手加上更稳) */
   html {
-    overflow-y: scroll; /* 强制滚动条常驻，防止页面忽宽忽窄 */
+    overflow-y: scroll;
   }
 </style>
