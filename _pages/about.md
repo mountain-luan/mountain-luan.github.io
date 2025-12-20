@@ -33,7 +33,7 @@ If you are interested in my research topics, you are more than welcome to contac
 <style>
   /* 电脑端：保持原样，限制图片宽度，左浮动 */
   .profile {
-    width: 20% !important;
+    width: 15% !important;
     max-width: 250px;
     margin-right: 30px;
   }
