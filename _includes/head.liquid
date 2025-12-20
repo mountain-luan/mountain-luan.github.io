@@ -149,25 +149,61 @@
 {% endif %}
 
 <style>
-  /* --- 1. 防止页面整体下移 (基础高度预留) --- */
+  /* --- 1. 顶部间距极简优化 (Space Reduction) --- */
+  
+  /* 调整1：减小 Body 预留给导航栏的高度 */
   body {
-    /* 稍微减小一点预留高度，让内容往上提一点 */
-    padding-top: 50px !important; 
+    padding-top: 56px !important; /* 移动端标准高度 */
   }
   @media (min-width: 768px) {
     body {
-      padding-top: 65px !important; /* 电脑端也稍微提一点 */
+      padding-top: 60px !important; /* 电脑端从之前的 70px 减小到 60px */
     }
   }
 
-  /* --- 2. 进一步缩小标题与导航栏的距离 --- */
-  /* 强制把名字那一行上面的空白切掉一部分 */
-  .post-header, .post-title {
-    margin-top: 0px !important;
-    padding-top: 10px !important; /*稍微留一点呼吸感，不要贴死*/
+  /* 调整2：消除容器内部的默认填充 */
+  /* 这才是导致空白大的核心原因，通常容器自带了 padding-top */
+  .container, div.post {
+    padding-top: 0px !important;
   }
 
-  /* --- 3. 电脑端布局 (保持不变) --- */
+  /* 调整3：强制把标题栏往上提 */
+  .post-header {
+    margin-top: 10px !important; /* 只留 10px 呼吸感 */
+    margin-bottom: 20px !important; /* 标题和正文之间的距离也稍微控制一下 */
+  }
+  
+  /* 消除 H1 标题自带的巨大上边距 */
+  .post-title {
+    margin-top: 0px !important;
+  }
+
+
+  /* --- 2. 移动端布局 (左对齐 + 缩小) --- */
+  @media (max-width: 768px) {
+    .profile {
+      width: 100% !important;
+      float: none !important;
+      display: block !important;
+      margin-bottom: 15px !important; /* 图片和下方文字间距 */
+    }
+    
+    .profile img {
+      width: 140px !important; /* 再次微调：110px 更精致 */
+      max-width: 140px !important;
+      margin: 0 !important;    /* 强制靠左 */
+      display: block;
+    }
+    
+    /* 名字下方的图标区域也强制靠左 */
+    .profile .more-info div {
+       justify-content: flex-start !important;
+       padding-left: 2px !important; /* 稍微修正一点视觉对齐 */
+    }
+  }
+
+
+  /* --- 3. 电脑端布局 (防止位移的核心代码 - 保持不变) --- */
   @media (min-width: 769px) {
     .profile {
       width: 20% !important;
@@ -177,44 +213,32 @@
     }
   }
 
-  /* --- 4. 移动端布局 (左对齐 + 缩小 + 独占一行) --- */
-  @media (max-width: 768px) {
-    .profile {
-      width: 100% !important; /* 容器占满一行，确保文字被挤到下面 */
-      float: none !important;
-      display: block !important;
-      margin-bottom: 20px !important;
-    }
-    
-    .profile img {
-      /* 修改点：缩小宽度，且靠左 */
-      width: 120px !important; /* 你可以调整这个数值，比如 100px 或 140px */
-      max-width: 120px !important;
-      margin: 0 !important;    /* 去掉 auto，强制靠左 */
-      display: block;
-    }
-    
-    /* 图标也跟随靠左 */
-    .profile .more-info div {
-       justify-content: flex-start !important; /* 靠左对齐 */
-       padding-left: 0 !important;
-    }
-  }
 
-  /* --- 5. 暗色模式链接颜色修复 --- */
-  /* 当 data-theme="dark" 时，强制把所有链接变成浅青色 */
+  /* --- 4. 暗色模式配色优化 (Dark Mode Colors) --- */
+  
+  /* 使用 #58a6ff (GitHub 风格静谧蓝)，专业且耐看 */
   [data-theme="dark"] a {
-    color: #4db6ac !important; /* 这是一个柔和的青绿色，很适合黑底 */
+    color: #58a6ff !important; 
+    text-decoration: none; /* 可选：去掉下划线让界面更干净，悬停时再显示 */
   }
+  
   [data-theme="dark"] a:hover {
-    color: #80cbc4 !important; /* 鼠标悬停时变得更亮一点 */
-  }
-  /* 特殊处理：防止导航栏链接颜色也变了 (导航栏通常有自己的颜色逻辑) */
-  [data-theme="dark"] .navbar a {
-    color: inherit !important; /* 保持导航栏原有样式 */
+    color: #79c0ff !important; /* 悬停时稍微变亮 */
+    text-decoration: underline;
   }
 
-  /* --- 6. 滚动条稳定 --- */
+  /* 保护导航栏：导航栏链接颜色跟随主题默认，不要变蓝 */
+  [data-theme="dark"] .navbar a {
+    color: inherit !important;
+  }
+  /* 保护图标颜色：邮箱、LinkedIn等图标通常使用主题色，强制变蓝可能不好看 */
+  /* 如果你希望图标也变蓝，把下面这一行删掉即可 */
+  [data-theme="dark"] .profile .more-info a {
+     color: inherit !important; 
+  }
+
+
+  /* --- 5. 滚动条稳定 (防抖) --- */
   html {
     overflow-y: scroll;
   }
