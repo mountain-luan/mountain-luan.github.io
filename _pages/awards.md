@@ -25,7 +25,7 @@ nav_order: 3
     padding-top: 4px !important;
     padding-bottom: 4px !important;
     vertical-align: top !important;
-    font-size: 1rem; /* 明确指定字体大小，确保统一 */
+    font-size: 1rem;
   }
   
   /* 2. 大标题样式 */
@@ -44,7 +44,7 @@ nav_order: 3
   /* 4. Services 专用样式 */
   .service-header {
     font-weight: bold; 
-    color: var(--global-theme-color);
+    color: inherit;  /* 【修改点】改为 inherit，跟随正文颜色，不再用蓝色 */
     margin-top: 20px;
     margin-bottom: 8px;
     font-size: 1.05rem;
@@ -52,7 +52,7 @@ nav_order: 3
   .service-list {
     margin-bottom: 10px;
     padding-left: 20px;
-    font-size: 1rem; /* 【修改点】确保列表字体和上面表格内容一致 */
+    font-size: 1rem; 
   }
   .service-list li {
     margin-bottom: 5px;
@@ -66,11 +66,11 @@ nav_order: 3
     <tbody>
       <tr>
         <td class="cv-date">Oct 2025</td>
-        <td class="cv-content">Best Student Paper Award (First Prize), The 21st Chinese Conference on Complex Networks (CCCN 2025)</td>
+        <td class="cv-content"><strong>Best Student Paper Award (First Prize)</strong>, The 21st Chinese Conference on Complex Networks (CCCN 2025)</td>
       </tr>
       <tr>
         <td class="cv-date">Apr 2025</td>
-        <td class="cv-content">Top Innovative Talent in Basic Disciplines, Wuhan University</td>
+        <td class="cv-content"><strong>Top Innovative Talent in Basic Disciplines</strong>, Wuhan University</td>
       </tr>
       <tr>
         <td class="cv-date">Mar 2025</td>
@@ -115,7 +115,9 @@ nav_order: 3
 <div class="section-divider"></div>
 
 <h3>Academic Services</h3>
-<div> <div class="service-header">Journal Reviewer</div>
+<div>
+  
+  <div class="service-header">Journal Reviewer</div>
   <ul class="service-list">
     <li>Automatica</li>
     <li>IEEE Transactions on Automatic Control (TAC)</li>
