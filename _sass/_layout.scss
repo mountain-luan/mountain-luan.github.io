@@ -72,33 +72,3 @@ body.sticky-bottom-footer {
   }
 }
 
-
-/* =======================================================
-   终极稳定版：页面内容静默淡入 (Silent Fade-in)
-   只动内容层，不动布局层，杜绝抖动
-   ======================================================= */
-
-@keyframes fadeInSilent {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* 关键修改：
-   只针对 .post (主页/关于页的核心内容区) 和 article (文章页)
-   绝对不要去动 .container 或 body
-*/
-.post, 
-article {
-  /* 0.4s 匀速淡入 */
-  animation: fadeInSilent 0.4s ease-out both;
-  
-  /* 性能优化：告诉浏览器只改变透明度，不要重排布局 */
-  will-change: opacity; 
-  
-  /* 强制无位移，双重保险 */
-  transform: none !important; 
-}
