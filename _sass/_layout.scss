@@ -74,22 +74,32 @@ body.sticky-bottom-footer {
 
 
 /* =======================================================
-   全局页面加载过渡效果 (Page Transition Animation)
-   让页面切换时有一个柔和的淡入浮动效果
+   最终修正版：纯净淡入效果 (No Movement)
+   彻底移除任何位移，只有透明度变化
    ======================================================= */
 
-@keyframes fadeInSimple {
+/* 定义只有透明度变化的动画 */
+@keyframes fadeInPure {
   0% {
     opacity: 0;
+    /* 强制无位移 */
+    transform: none; 
   }
   100% {
     opacity: 1;
+    /* 强制无位移 */
+    transform: none;
   }
 }
 
-/* 应用到主要内容区域 */
+/* 应用动画到内容区域 */
 body > .container, 
 article.post {
-  /* 0.5s 淡入，没有任何位移，绝对平滑 */
-  animation: fadeInSimple 0.5s ease-out forwards;
+  /* animation-fill-mode: both; 确保动画开始前和结束后状态稳定
+     0.4s: 稍微调快一点，减少等待感
+  */
+  animation: fadeInPure 0.4s ease-out both;
+  
+  /* 双重保险：强制关闭 GPU 位移渲染，防止浏览器自作聪明 */
+  transform: none !important;
 }
