@@ -254,13 +254,17 @@ let transTheme = () => {
   }, 500);
 };
 
-// Determine the expected state of the theme toggle, which can be "dark", "light", or
-// "system". Default is "system".
+// Determine the expected state of the theme toggle.
+// Modified: Removed "system" fallback. Force "dark" default.
 let determineThemeSetting = () => {
   let themeSetting = localStorage.getItem("theme");
-  if (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") {
-    themeSetting = "system";
+  
+  // 如果缓存里是 system，或者什么都没有，或者不是 light
+  // 统统强制设为 'dark' (或者你喜欢的 'light')
+  if (themeSetting != "dark" && themeSetting != "light") {
+    themeSetting = "dark"; 
   }
+  
   return themeSetting;
 };
 
