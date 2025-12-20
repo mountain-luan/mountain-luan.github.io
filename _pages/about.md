@@ -8,7 +8,7 @@ profile:
   align: left
   image: bio_pic.jpg
   image_circular: false
-  image_width: 25%
+  image_width: 15%
   
   more_info: >
     <div style="display: flex; align-items: center; justify-content: flex-start; margin-top: 10px;">
