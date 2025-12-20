@@ -41,12 +41,20 @@ If you are interested in my research topics, you are more than welcome to contac
   /* 移动端 (屏幕宽度小于 768px)：调整图片大小和布局 */
   @media (max-width: 768px) {
     .profile {
-      width: 60% !important; /* 手机上放大图片至 60% 宽度 */
-      max-width: 300px;      /* 放宽最大限制 */
-      /* 核心修复：强制左右边距自动 (居中关键) */
+      /* 1. 缩小图片：从60%改为40% */
+      width: 40% !important;
+      max-width: 200px; /* 限制最大宽度，防止平板上过大 */
+      
+      /* 2. 强制独占一行：去掉浮动，设为块级元素 */
+      float: none !important; 
+      display: block !important; 
+      
+      /* 3. 完美居中：左右margin设为auto */
       margin-left: auto !important;
       margin-right: auto !important;
-      margin-bottom: 20px !important; /* 下方留白 */
+      
+      /* 4. 下方留白：确保文本从下方开始，不紧贴图片 */
+      margin-bottom: 25px !important; 
     }
     
     /* 手机端让图标区域也居中显示 */
