@@ -61,7 +61,7 @@ body.sticky-bottom-footer {
 /* 针对大屏幕电脑 (屏幕 > 1200px) */
 @media (min-width: 1200px) {
   .container {
-    max-width: 850px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
+    max-width: 600px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
   }
 }
 
@@ -70,4 +70,30 @@ body.sticky-bottom-footer {
   .container {
     max-width: 800px !important;  /* 默认是 960px，这里改小 */
   }
+}
+
+
+/* =======================================================
+   全局页面加载过渡效果 (Page Transition Animation)
+   让页面切换时有一个柔和的淡入浮动效果
+   ======================================================= */
+
+/* 1. 定义动画关键帧：从透明+下沉 -> 不透明+复位 */
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px); /* 初始位置向下偏移 15px */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);    /* 最终位置复原 */
+  }
+}
+
+/* 2. 将动画应用到 body 或主要容器 */
+body {
+  /* 0.6s: 动画持续时间 (建议 0.4s - 0.8s 之间)
+     ease-out: 动画曲线 (开始快，结束慢，感觉更自然)
+  */
+  animation: fadeInSlideUp 0.6s ease-out forwards;
 }
