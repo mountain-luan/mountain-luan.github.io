@@ -61,7 +61,7 @@ body.sticky-bottom-footer {
 /* 针对大屏幕电脑 (屏幕 > 1200px) */
 @media (min-width: 1200px) {
   .container {
-    max-width: 600px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
+    max-width: 850px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
   }
 }
 
@@ -90,10 +90,8 @@ body.sticky-bottom-footer {
   }
 }
 
-/* 2. 将动画应用到 body 或主要容器 */
-body {
-  /* 0.6s: 动画持续时间 (建议 0.4s - 0.8s 之间)
-     ease-out: 动画曲线 (开始快，结束慢，感觉更自然)
-  */
+/* 2. */
+/* 只让内容区域动，导航栏固定不动 */
+.container, .post {
   animation: fadeInSlideUp 0.6s ease-out forwards;
 }
