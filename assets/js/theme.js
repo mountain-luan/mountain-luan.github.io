@@ -285,12 +285,6 @@ let determineComputedTheme = () => {
 };
 
 let initTheme = () => {
-  // 【新增】强制清洗：如果检测到 system，强制改成 dark
-  // 这段代码运行一次后，你的按钮就会永远回来了
-  if (localStorage.getItem("theme") === "system" || !localStorage.getItem("theme")) {
-    localStorage.setItem("theme", "dark");
-  }
-  
   let themeSetting = determineThemeSetting();
 
   setThemeSetting(themeSetting);
