@@ -51,3 +51,23 @@ body.sticky-bottom-footer {
 *****************************************************************************/
 
 // TODO: redefine projects layout.
+
+
+/* =======================================================
+   全局宽度调整 (Global Width Override)
+   强制覆盖 Bootstrap 的默认宽度，让所有页面都变瘦
+   ======================================================= */
+
+/* 针对大屏幕电脑 (屏幕 > 1200px) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 850px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
+  }
+}
+
+/* 针对普通笔记本/平板 (992px < 屏幕 < 1200px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 800px !important;  /* 默认是 960px，这里改小 */
+  }
+}
