@@ -1,14 +1,17 @@
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
-// Toggle through light, dark, and system theme settings.
+// Toggle through light and dark theme settings ONLY.
+// Modified: Removed 'system' from the cycle.
 let toggleThemeSetting = () => {
   let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
+  
+  // 如果当前是暗色，就切亮色
+  if (themeSetting == "dark") {
     setThemeSetting("light");
-  } else if (themeSetting == "light") {
+  } 
+  // 其他情况（包括亮色、或者第一次来的系统默认），统统切暗色
+  else {
     setThemeSetting("dark");
-  } else {
-    setThemeSetting("system");
   }
 };
 
