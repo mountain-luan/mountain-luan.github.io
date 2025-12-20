@@ -29,3 +29,37 @@ I am currently a Ph.D. candidate at the School of Mathematics and Statistics, Wu
 My research interests lie at the intersection of **Network Science** and **Control Theory**, with a particular focus on **Multi-agent Systems**. Currently, I primarily focus on **Opinion Dynamics**, which investigates the evolution of complex opinions and the emergence of collective behaviors (e.g., consensus and polarization) over social networks. My work integrates **theoretical modeling** using control-theoretic tools to uncover the mathematical mechanisms behind these social phenomena with **data-driven applications** that validate sociological hypotheses against real-world user interactions on social media. Previously, I also worked on network synchronization, link prediction, and influential spreader identification.
 
 If you are interested in my research topics, you are more than welcome to contact me via email at [luanyy_1704@whu.edu.cn](mailto:luanyy_1704@whu.edu.cn) (preferred) or [yyluan1999@gmail.com](mailto:yyluan1999@gmail.com).
+
+
+<style>
+  /* 电脑端：左浮动，右边距留白 */
+  .profile {
+    width: 25% !important;
+    max-width: 250px;
+    margin-right: 30px;
+  }
+
+  /* 移动端 (屏幕小于768px)：强制居中修复 */
+  @media (max-width: 768px) {
+    .profile {
+      width: 100% !important; 
+      max-width: 100% !important;
+      float: none !important; 
+      display: block !important; 
+      margin-bottom: 25px !important;
+    }
+    
+    /* 图片单独控制：变小并居中 */
+    .profile img {
+      width: 40% !important;
+      max-width: 160px !important;
+      display: block;
+      margin: 0 auto !important;
+    }
+    
+    /* 图标容器居中 */
+    .profile .more-info div {
+       justify-content: center !important;
+    }
+  }
+</style>
