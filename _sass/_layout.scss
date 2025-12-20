@@ -61,7 +61,7 @@ body.sticky-bottom-footer {
 /* 针对大屏幕电脑 (屏幕 > 1200px) */
 @media (min-width: 1200px) {
   .container {
-    max-width: 850px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
+    max-width: 900px !important;  /* 默认是 1140px，这里改小，越小越瘦 */
   }
 }
 
@@ -78,20 +78,23 @@ body.sticky-bottom-footer {
    让页面切换时有一个柔和的淡入浮动效果
    ======================================================= */
 
-/* 1. 定义动画关键帧：从透明+下沉 -> 不透明+复位 */
 @keyframes fadeInSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(15px); /* 初始位置向下偏移 15px */
+    transform: translateY(20px); /* 从下方20px处开始 */
   }
   100% {
     opacity: 1;
-    transform: translateY(0);    /* 最终位置复原 */
+    transform: translateY(0);    /* 回到原位 */
   }
 }
 
-/* 2. */
-/* 只让内容区域动，导航栏固定不动 */
-.container, .post {
-  animation: fadeInSlideUp 0.6s ease-out forwards;
+/* 关键修改：
+   1. 不再对 body 使用动画，改用 > .container
+   2. 这样导航栏(header)不会受影响
+   3. 避免了刷新页面时的滚动条位移 bug
+*/
+body > .container, 
+article.post {
+  animation: fadeInSlideUp 0.5s ease-out forwards;
 }
