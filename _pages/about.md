@@ -30,36 +30,3 @@ My research interests lie at the intersection of **Network Science** and **Contr
 
 If you are interested in my research topics, you are more than welcome to contact me via email at [luanyy_1704@whu.edu.cn](mailto:luanyy_1704@whu.edu.cn) (preferred) or [yyluan1999@gmail.com](mailto:yyluan1999@gmail.com).
 
-
-<style>
-  /* 电脑端：左浮动，右边距留白 */
-  .profile {
-    width: 25% !important;
-    max-width: 250px;
-    margin-right: 30px;
-  }
-
-  /* 移动端 (屏幕小于768px)：强制居中修复 */
-  @media (max-width: 768px) {
-    .profile {
-      width: 100% !important; 
-      max-width: 100% !important;
-      float: none !important; 
-      display: block !important; 
-      margin-bottom: 25px !important;
-    }
-    
-    /* 图片单独控制：变小并居中 */
-    .profile img {
-      width: 40% !important;
-      max-width: 160px !important;
-      display: block;
-      margin: 0 auto !important;
-    }
-    
-    /* 图标容器居中 */
-    .profile .more-info div {
-       justify-content: center !important;
-    }
-  }
-</style>
