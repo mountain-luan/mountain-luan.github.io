@@ -149,33 +149,35 @@
 {% endif %}
 
 <style>
-  /* --- 1. 顶部间距极简优化 (Space Reduction) --- */
+  /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
   
-  /* 调整1：减小 Body 预留给导航栏的高度 */
+  /* Body 预留高度：只留出导航栏的物理高度，一点不多留 */
   body {
-    padding-top: 56px !important; /* 移动端标准高度 */
+    padding-top: 56px !important; /* 移动端导航栏标准高度 */
   }
   @media (min-width: 768px) {
     body {
-      padding-top: 60px !important; /* 电脑端从之前的 70px 减小到 60px */
+      padding-top: 60px !important; /* 电脑端导航栏高度，设为紧凑值 */
     }
   }
 
-  /* 调整2：消除容器内部的默认填充 */
-  /* 这才是导致空白大的核心原因，通常容器自带了 padding-top */
-  .container, div.post {
-    padding-top: 0px !important;
-  }
-
-  /* 调整3：强制把标题栏往上提 */
+  /* 核心：清除容器和标题的所有上方边距 */
+  .container, 
+  div.post, 
   .post-header {
-    margin-top: 10px !important; /* 只留 10px 呼吸感 */
-    margin-bottom: 20px !important; /* 标题和正文之间的距离也稍微控制一下 */
+    padding-top: 0px !important;
+    margin-top: 0px !important;
   }
   
-  /* 消除 H1 标题自带的巨大上边距 */
+  /* 调整标题的位置 */
   .post-title {
-    margin-top: 0px !important;
+    margin-top: 10px !important; /* 距离导航栏底部的距离，这里设为 10px，非常紧凑 */
+    margin-bottom: 5px !important; /* 名字和下方副标题的距离 */
+  }
+  
+  /* 调整副标题 (Subtitle) 的位置 */
+  .post-description, .desc {
+    margin-bottom: 20px !important; /* 副标题和正文的距离 */
   }
 
 
@@ -185,25 +187,24 @@
       width: 100% !important;
       float: none !important;
       display: block !important;
-      margin-bottom: 15px !important; /* 图片和下方文字间距 */
+      margin-bottom: 15px !important;
     }
     
     .profile img {
-      width: 140px !important; /* 再次微调：110px 更精致 */
-      max-width: 140px !important;
-      margin: 0 !important;    /* 强制靠左 */
+      width: 150px !important; 
+      max-width: 150px !important;
+      margin: 0 !important;    /* 靠左 */
       display: block;
     }
     
-    /* 名字下方的图标区域也强制靠左 */
     .profile .more-info div {
        justify-content: flex-start !important;
-       padding-left: 2px !important; /* 稍微修正一点视觉对齐 */
+       padding-left: 2px !important;
     }
   }
 
 
-  /* --- 3. 电脑端布局 (防止位移的核心代码 - 保持不变) --- */
+  /* --- 3. 电脑端布局 (防止位移) --- */
   @media (min-width: 769px) {
     .profile {
       width: 20% !important;
@@ -214,31 +215,35 @@
   }
 
 
-  /* --- 4. 暗色模式配色优化 (Dark Mode Colors) --- */
+  /* --- 4. 暗色模式配色优化 (Smart Dark Mode) --- */
   
-  /* 使用 #58a6ff (GitHub 风格静谧蓝)，专业且耐看 */
+  /* 通用链接：静谧蓝 */
   [data-theme="dark"] a {
     color: #58a6ff !important; 
-    text-decoration: none; /* 可选：去掉下划线让界面更干净，悬停时再显示 */
+    text-decoration: none;
   }
-  
   [data-theme="dark"] a:hover {
-    color: #79c0ff !important; /* 悬停时稍微变亮 */
+    color: #79c0ff !important;
     text-decoration: underline;
   }
 
-  /* 保护导航栏：导航栏链接颜色跟随主题默认，不要变蓝 */
-  [data-theme="dark"] .navbar a {
+  /* 【修复】News 标题保持原色 */
+  /* 规则：如果是 H1, H2, H3 里的链接，不要变蓝，跟随标题颜色 */
+  [data-theme="dark"] h1 a,
+  [data-theme="dark"] h2 a,
+  [data-theme="dark"] h3 a {
+    color: inherit !important; 
+    text-decoration: none !important;
+  }
+
+  /* 保护导航栏和图标 */
+  [data-theme="dark"] .navbar a,
+  [data-theme="dark"] .profile .more-info a {
     color: inherit !important;
   }
-  /* 保护图标颜色：邮箱、LinkedIn等图标通常使用主题色，强制变蓝可能不好看 */
-  /* 如果你希望图标也变蓝，把下面这一行删掉即可 */
-  [data-theme="dark"] .profile .more-info a {
-     color: inherit !important; 
-  }
 
 
-  /* --- 5. 滚动条稳定 (防抖) --- */
+  /* --- 5. 滚动条稳定 --- */
   html {
     overflow-y: scroll;
   }
