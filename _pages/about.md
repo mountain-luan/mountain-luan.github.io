@@ -33,7 +33,7 @@ If you are interested in my research topics, you are more than welcome to contac
 <style>
   /* 电脑端：保持原样，限制图片宽度，左浮动 */
   .profile {
-    width: 15% !important;
+    width: 20% !important;
     max-width: 250px;
     margin-right: 30px;
   }
@@ -43,9 +43,10 @@ If you are interested in my research topics, you are more than welcome to contac
     .profile {
       width: 60% !important; /* 手机上放大图片至 60% 宽度 */
       max-width: 300px;      /* 放宽最大限制 */
-      float: none !important;/* 取消文字环绕 */
-      display: block;        /* 块级显示 */
-      margin: 0 auto 20px;   /* 上下留白，左右自动居中 */
+      /* 核心修复：强制左右边距自动 (居中关键) */
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-bottom: 20px !important; /* 下方留白 */
     }
     
     /* 手机端让图标区域也居中显示 */
