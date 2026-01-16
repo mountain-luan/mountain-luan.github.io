@@ -149,6 +149,36 @@
 {% endif %}
 
 <style>
+/* --- 1. 字体与阅读体验优化 (Font & Readability) --- */
+  
+  /* 全局字体设置 */
+  body, p, li, div {
+    /* 使用系统原生字体栈：Mac用San Francisco，Win用Segoe UI，Linux用Roboto */
+    /* 这种组合最清晰，且比默认的 Lato/Roboto 看起来要粗一些 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    
+    /* 字号加大：默认通常是 1rem(16px) 或更小，这里设为 17px */
+    font-size: 17px !important;
+    
+    /* 字重加粗：al-folio 默认常设为 300(Light)，这里强制设为 400(Regular) */
+    font-weight: 400 !important;
+    
+    /* 行高优化：增加行间距，防止文字挤在一起 */
+    line-height: 1.7 !important;
+  }
+
+  /* 针对标题的特殊优化 */
+  h1, h2, h3, h4, h5, h6, .post-title {
+    /* 标题也要用更粗的字重，显得有分量 */
+    font-weight: 600 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  }
+  
+  /* 针对 News 列表的优化 */
+  .news p, .news li {
+    font-size: 16px !important; /* News 列表稍微小一点点，保持精致 */
+  }
+
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
   
   /* Body 预留高度：只留出导航栏的物理高度，一点不多留 */
