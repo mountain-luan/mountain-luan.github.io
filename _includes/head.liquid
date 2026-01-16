@@ -149,46 +149,46 @@
 {% endif %}
 
 <style>
-  /* --- 1. 字体粗细精细控制 (Weight Tuning) --- */
+  /* --- 1. 字体粗细与颜色 (Typography & Color) --- */
   
-  /* 【正文】保持你满意的“正常”粗细 */
-  /* 解决“正文太细”的问题：让阅读内容扎实清楚 */
+  /* 【正文配置】 */
+  /* 作用：400粗细 + #333333柔和黑 */
   body, p, li, div, td, span, .desc {
-    font-weight: 400 !important; /* Regular (标准) */
+    font-weight: 400 !important;   /* 标准粗细，阅读不累 */
+    color: #333333 !important;     /* 【关键】柔和黑，不是纯黑(#000) */
   }
 
-  /* 【大标题】回归“清秀/细体” */
-  /* 解决“Yangyang Luan / Publications 变粗”的问题 */
-  /* 这里的逻辑是：字号越大，字重应该越轻，才显高级 */
+  /* 【大标题配置】 */
+  /* 作用：300细体 + #222222 (标题稍微比正文黑一点点，显精神) */
   h1, h2, h3, h4, .post-title, .navbar-brand {
-    font-weight: 300 !important; /* Light (细体) - 让大标题变回原来的优雅感 */
+    font-weight: 300 !important;   /* 细体，保持高级感 */
+    color: #222222 !important;     /* 标题用深一点的黑，区分层次 */
   }
   
-  /* 【名字加粗部分】专门控制 "Yangyang" */
-  /* 也就是 HTML 里的 <b> 或 .font-weight-bold */
+  /* 【名字加粗部分】 "Yangyang" */
   .post-title strong, 
   .post-title b, 
   .post-title .font-weight-bold,
   .navbar-brand strong, 
   .navbar-brand b {
-    font-weight: 500 !important; /* Medium (中等) - 比 Luan 稍微粗一点点，但绝不臃肿 */
+    font-weight: 500 !important;   /* 中等粗细 */
+    color: #000000 !important;     /* 名字部分可以用纯黑强调一下 */
   }
 
-  /* --- 2. News 列表完美修正 (Fix News Date & Font) --- */
-  /* 解决日期字号小、字体不统一的问题 */
+
+  /* --- 2. News 列表修正 (Fix News Date) --- */
   
   .news table td, .news table th {
-    font-size: 1rem !important;    /* 强制跟正文一样大 (1rem 通常等于 16px) */
-    font-weight: 400 !important;   /* 强制跟正文一样粗 */
-    font-family: inherit !important; /* 强制继承全局字体，防止变成奇怪的默认字体 */
-    vertical-align: top !important; /* 让日期和文字顶部对齐，更整齐 */
-    color: inherit !important;     /* 防止日期颜色太浅看不清 */
+    font-size: 1rem !important;    
+    font-weight: 400 !important;   
+    font-family: inherit !important; 
+    vertical-align: top !important; 
+    /* 这里的颜色继承 body 的 #333333，所以不用单独写 */
   }
   
-  /* 给日期那一列专门加一点右边距，防止挨得太近 */
   .news table td:first-child {
     padding-right: 20px !important;
-    min-width: 120px !important; /* 保证日期列有足够宽度，不换行 */
+    min-width: 120px !important; 
   }
 
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
