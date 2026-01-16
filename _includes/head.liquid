@@ -149,33 +149,41 @@
 {% endif %}
 
 
-<style>
-  /* --- 1. 全局字重统一 (Global Font Weight) --- */
+/* --- 1. 全局字重与颜色 (Typography) --- */
   
-  /* 【正文 & 列表 & 表格】统一设为 400 (标准) */
+  /* 【正文基准】 */
+  /* 涵盖所有容器，确保所有文字默认都是 400 */
   body, p, li, div, td, th, span, a, .desc {
     font-weight: 400 !important; 
     color: #333333; /* 柔和黑 */
   }
 
-  /* 【关键修改】标题不再用 300 (细体)，全部加固为 400 (标准) */
-  /* 这解决了 "Awards", "Academic Services" 太细的问题 */
-  h1, h2, h3, h4, h5, h6, .post-title, .navbar-brand {
-    font-weight: 400 !important; /* 从 300 改回 400，扎实！ */
-    color: #222222; /* 标题颜色稍深，增加层次 */
+  /* 【大标题 (Page Titles)】 -> 降级为 300 */
+  /* 解决 "Yangyang Luan", "Publications" 看起来太粗的问题 */
+  h1, .post-title, .navbar-brand {
+    font-weight: 300 !important; /* 细体，配合大字号更优雅 */
+    color: #222222; 
+  }
+
+  /* 【小标题 (Section Headers)】 -> 保持 400 */
+  /* 解决 "Awards", "News" 等不应该比正文细的要求 */
+  h2, h3, h4, h5, h6 {
+    font-weight: 400 !important; /* 标准粗细，与正文一致，依靠字号区分层级 */
+    color: #222222;
   }
   
-  /* 【名字强调】 "Yangyang" 保持 500 (中等) */
+  /* 【名字强调】 "Yangyang" */
+  /* 既然大标题是 300，这里稍微加一点点重到 400 即可区分，或者 500 */
+  /* 这里设为 400，让它比 "Luan" (300) 稍微实一点，但不会突兀 */
   .post-title strong, .navbar-brand b {
-    font-weight: 400 !important;
+    font-weight: 400 !important; 
   }
 
 
   /* --- 2. 导航栏字体修复 --- */
   
-  /* 导航栏链接也统一为 400，确保 "About" 等看起来不飘 */
   .navbar-nav .nav-item .nav-link {
-    font-weight: 400 !important;
+    font-weight: 400 !important; /* 保持标准粗细 */
     font-size: 1rem !important; 
     color: #333333; 
   }
@@ -196,14 +204,16 @@
   }
 
 
-  /* --- 4. 暗色模式完美适配 (Dark Mode) --- */
+  /* --- 4. 暗色模式修复 (Dark Mode Fix) --- */
   
-  /* 基础反色 */
-  [data-theme="dark"] body { color: #e0e0e0 !important; }
+  /* 【关键修复】之前的代码漏掉了 div，导致 Bio 区域文字发灰 */
+  /* 这里强制把所有常见文本容器在暗色模式下变白 */
+  [data-theme="dark"] body,
   [data-theme="dark"] p,
   [data-theme="dark"] li,
   [data-theme="dark"] .desc,
-  [data-theme="dark"] td { 
+  [data-theme="dark"] td,
+  [data-theme="dark"] div { /* 加入 div，修复个人简介颜色 */
     color: #e0e0e0 !important;
   }
 
@@ -232,108 +242,35 @@
     text-decoration: underline;
   }
   
-  /* 保护特殊元素 (年份/奖项) */
+  /* 保护特殊元素 (年份/奖项) 保持原色 */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr {
     color: #a0a0a0 !important; 
   }
 
-  /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
-  
-  /* Body 预留高度：只留出导航栏的物理高度，一点不多留 */
-  body {
-    padding-top: 56px !important; /* 移动端导航栏标准高度 */
-  }
-  @media (min-width: 768px) {
-    body {
-      padding-top: 60px !important; /* 电脑端导航栏高度，设为紧凑值 */
-    }
-  }
 
-  /* 核心：清除容器和标题的所有上方边距 */
-  .container, 
-  div.post, 
-  .post-header {
+  /* --- 5. 布局优化 (保持不变) --- */
+  
+  body { padding-top: 56px !important; }
+  @media (min-width: 768px) {
+    body { padding-top: 60px !important; }
+  }
+  .container, div.post, .post-header {
     padding-top: 0px !important;
     margin-top: 0px !important;
   }
-  
-  /* 调整标题的位置 */
-  .post-title {
-    margin-top: 15px !important; /* 距离导航栏底部的距离，这里设为 10px，非常紧凑 */
-    margin-bottom: 5px !important; /* 名字和下方副标题的距离 */
-  }
-  
-  /* 调整副标题 (Subtitle) 的位置 */
-  .post-description, .desc {
-    margin-bottom: 20px !important; /* 副标题和正文的距离 */
-  }
+  .post-title { margin-top: 15px !important; margin-bottom: 5px !important; }
+  .post-description, .desc { margin-bottom: 20px !important; }
 
-
-  /* --- 2. 移动端布局 (左对齐 + 缩小) --- */
   @media (max-width: 768px) {
-    .profile {
-      width: 100% !important;
-      float: none !important;
-      display: block !important;
-      margin-bottom: 15px !important;
-    }
-    
-    .profile img {
-      width: 150px !important; 
-      max-width: 150px !important;
-      margin: 0 !important;    /* 靠左 */
-      display: block;
-    }
-    
-    .profile .more-info div {
-       justify-content: flex-start !important;
-       padding-left: 2px !important;
-    }
+    .profile { width: 100% !important; float: none !important; display: block !important; margin-bottom: 15px !important; }
+    .profile img { width: 150px !important; max-width: 150px !important; margin: 0 !important; display: block; }
+    .profile .more-info div { justify-content: flex-start !important; padding-left: 2px !important; }
   }
 
-
-  /* --- 3. 电脑端布局 (防止位移) --- */
   @media (min-width: 769px) {
-    .profile {
-      width: 20% !important;
-      max-width: 250px;
-      margin-right: 30px;
-      float: left !important;
-    }
+    .profile { width: 20% !important; max-width: 250px; margin-right: 30px; float: left !important; }
   }
 
-
-  /* --- 4. 暗色模式配色优化 (Smart Dark Mode) --- */
-  
-  /* 通用链接：静谧蓝 */
-  [data-theme="dark"] a {
-    color: #58a6ff !important; 
-    text-decoration: none;
-  }
-  [data-theme="dark"] a:hover {
-    color: #79c0ff !important;
-    text-decoration: underline;
-  }
-
-  /* 【修复】News 标题保持原色 */
-  /* 规则：如果是 H1, H2, H3 里的链接，不要变蓝，跟随标题颜色 */
-  [data-theme="dark"] h1 a,
-  [data-theme="dark"] h2 a,
-  [data-theme="dark"] h3 a {
-    color: inherit !important; 
-    text-decoration: none !important;
-  }
-
-  /* 保护导航栏和图标 */
-  [data-theme="dark"] .navbar a,
-  [data-theme="dark"] .profile .more-info a {
-    color: inherit !important;
-  }
-
-
-  /* --- 5. 滚动条稳定 --- */
-  html {
-    overflow-y: scroll;
-  }
+  html { overflow-y: scroll; }
 </style>
