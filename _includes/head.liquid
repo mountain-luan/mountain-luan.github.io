@@ -149,34 +149,75 @@
 {% endif %}
 
 <style>
-/* --- 1. 字体与阅读体验优化 (Font & Readability) --- */
+/* --- 1. 全局字体大换血：Georgia 学术风 --- */
   
-  /* 全局字体设置 */
-  body, p, li, div {
-    /* 使用系统原生字体栈：Mac用San Francisco，Win用Segoe UI，Linux用Roboto */
-    /* 这种组合最清晰，且比默认的 Lato/Roboto 看起来要粗一些 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  /* 覆盖所有可能的元素，确保没有漏网之鱼 */
+  body, p, li, div, a, span, 
+  table, td, th,                /* 重点修复：News 和 Awards 的表格内容 */
+  h1, h2, h3, h4, h5, h6, 
+  .post-title, .post-description {
+    /* 核心修改：使用 Georgia 作为首选，Times New Roman 备选 */
+    font-family: Georgia, "Times New Roman", Times, serif !important;
     
-    /* 字号加大：默认通常是 1rem(16px) 或更小，这里设为 17px */
-    font-size: 17px !important;
-    
-    /* 字重加粗：al-folio 默认常设为 300(Light)，这里强制设为 400(Regular) */
-    font-weight: 400 !important;
-    
-    /* 行高优化：增加行间距，防止文字挤在一起 */
-    line-height: 1.7 !important;
+    /* 颜色微调：衬线体通常用纯黑或深灰才好看 */
+    /* color: #333 !important; (可选：如果你觉得不够黑可以解开这行) */
   }
 
-  /* 针对标题的特殊优化 */
-  h1, h2, h3, h4, h5, h6, .post-title {
-    /* 标题也要用更粗的字重，显得有分量 */
+  /* 正文阅读体验优化 */
+  body, p, li, td {
+    font-size: 17px !important;   /* 字号：17px (比默认大一点，Georgia这个大小很舒服) */
+    line-height: 1.6 !important;  /* 行高：稍微紧凑一点，符合传统论文排版 */
+    font-weight: normal !important; /* 恢复标准粗细，Georgia 自带粗细就很合适 */
+  }
+
+  /* 标题稍微加粗 */
+  h1, h2, h3, h4, .post-title {
     font-weight: 600 !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
   }
   
-  /* 针对 News 列表的优化 */
-  .news p, .news li {
-    font-size: 16px !important; /* News 列表稍微小一点点，保持精致 */
+  /* 针对 News 列表日期的微调 */
+  .news table td {
+    font-size: 16px !important; /* 日期可以稍微小一号 */
+  }
+
+
+  /* --- 2. 导航栏对齐修复 (Vertical Alignment Fix) --- */
+  
+  /* 强制导航栏容器使用 Flex 布局，实现垂直居中 */
+  .navbar .container {
+    display: flex !important;
+    align-items: center !important; /* 关键：垂直居中 */
+  }
+  
+  /* 修正名字 (Yangyang Luan) 的行高 */
+  .navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 50px; /* 强制高度，配合 flex 实现居中 */
+  }
+
+  /* 修正右侧导航链接和图标 */
+  .navbar-nav {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row !important;
+  }
+  
+  .navbar-nav li {
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* 特别修正：开关灯按钮 */
+  button#light-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    height: auto !important;
   }
 
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
