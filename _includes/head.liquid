@@ -151,42 +151,44 @@
 
 <style>
   /* =======================================================
-     【V14.0 最终完美修正版】
-     1. Yangyang 微调：从 500 降为 400，实现“只粗一点点”的效果
-     2. News 日期修复：暗色模式下强制变亮，不再看不清
-     3. 全局统一：正文 400，大标题 300，完美平衡
+     【V15.0 最终修复版】
+     1. 字体分级：Luan(300 细体) vs Yangyang(400 标准) -> 完美微差
+     2. 颜色逻辑：只改“正文容器”，绝不误伤“年份/奖项/链接”
+     3. 暗色模式：News 日期强制变亮，正文强制变亮，但元数据保持原色
      ======================================================= */
 
-  /* --- 1. 全局字重与颜色 (Typography) --- */
+  /* --- 1. 全局字重与亮色模式 (Light Mode Typography) --- */
   
-  /* 【正文基准】所有内容默认使用 400 (标准) */
-  body, p, li, div, td, th, span, a, .desc {
+  /* 【正文基准】 */
+  /* 仅针对主要文本容器设置颜色，避开 span (因为年份/奖项通常在 span 里) */
+  body, p, li, div.col-sm-8, .desc {
     font-weight: 400 !important; 
     color: #333333; /* 柔和黑 */
   }
 
   /* 【大标题 (H1)】 -> 300 (细体) */
-  /* "Luan", "Publications" 等大字保持细体优雅感 */
   h1, .post-title, .navbar-brand {
     font-weight: 300 !important; 
     color: #222222; 
   }
 
   /* 【小标题 (H2-H6)】 -> 400 (标准) */
-  /* "Awards", "News" 等保持扎实 */
   h2, h3, h4, h5, h6 {
     font-weight: 400 !important; 
     color: #222222;
   }
   
-  /* 【名字微调】 "Yangyang" -> 设为 400 */
-  /* 解释：Luan 是 300，Yangyang 是 400。这是字体里最小的级差，只粗一点点 */
-  .post-title strong, .navbar-brand b {
+  /* 【名字微调】 Yangyang */
+  /* 强制覆盖浏览器默认的 bold，设为 400 (标准)，只比 300 (细体) 粗一点点 */
+  .post-title strong, 
+  .post-title b, 
+  .navbar-brand b,
+  .navbar-brand strong {
     font-weight: 400 !important; 
   }
 
 
-  /* --- 2. 导航栏修复 --- */
+  /* --- 2. 导航栏修复 (Navbar) --- */
   
   .navbar-nav .nav-item .nav-link {
     font-weight: 400 !important; 
@@ -201,7 +203,8 @@
     font-size: 1rem !important;      
     font-weight: 400 !important;     
     font-family: inherit !important; 
-    vertical-align: top !important;  
+    vertical-align: top !important;
+    /* 注意：这里不设 color，让它继承 body，或者由 dark mode 专门处理 */
   }
   
   .news table td:first-child {
@@ -210,38 +213,41 @@
   }
 
 
-  /* --- 4. 暗色模式强力修复 (Dark Mode Fix) --- */
+  /* --- 4. 暗色模式智能修复 (Dark Mode Logic) --- */
   
-  /* 基础反色：正文变亮灰 */
+  /* 策略：只把“背景板”文字变白，不覆盖特殊颜色的元件 */
+
+  /* 1. 正文变白 (包括 Bio 里的 div) */
   [data-theme="dark"] body,
   [data-theme="dark"] p,
   [data-theme="dark"] li,
   [data-theme="dark"] .desc,
-  [data-theme="dark"] div,
-  [data-theme="dark"] span { 
+  [data-theme="dark"] .post-content, /* 确保文章内容变白 */
+  [data-theme="dark"] .col-sm-8,     /* 确保 Bio 区域变白 */
+  [data-theme="dark"] .col-sm-10 {   /* 确保 News 内容区域变白 */
     color: #e0e0e0 !important;
   }
 
-  /* 标题变纯白 */
+  /* 2. News 日期强制变白 (修复看不清的问题) */
+  [data-theme="dark"] .news table td {
+    color: #e0e0e0 !important;
+  }
+
+  /* 3. 标题变纯白 */
   [data-theme="dark"] h1, 
   [data-theme="dark"] h2, 
   [data-theme="dark"] h3, 
-  [data-theme="dark"] h4, 
   [data-theme="dark"] .post-title,
   [data-theme="dark"] .navbar-brand {
     color: #ffffff !important;
   }
   
-  /* 【关键修复】News 日期在暗色模式下强制变亮 */
-  /* 之前看不清是因为它继承了特殊的灰色，这里强制改为 #e0e0e0 */
-  [data-theme="dark"] .news table td {
-    color: #e0e0e0 !important;
-  }
-  
-  /* 导航栏与链接修复 */
+  /* 4. 导航栏变白 */
   [data-theme="dark"] .navbar-nav .nav-item .nav-link {
     color: #e0e0e0 !important; 
   }
+  
+  /* 5. 链接颜色 (静谧蓝) */
   [data-theme="dark"] a {
     color: #58a6ff !important; 
     text-decoration: none;
@@ -251,19 +257,24 @@
     text-decoration: underline;
   }
   
-  /* 保护特殊元素 (年份/奖项) */
-  /* 年份保持浅灰，不要太亮以免抢眼 */
+  /* --- 5. 颜色保护区 (Color Protection) --- */
+  /* 这里的 CSS 权重极高，确保 dark mode 不会把它们洗白 */
+  
+  /* 保护年份、卷号 (灰色) */
   [data-theme="dark"] .periodical, 
-  [data-theme="dark"] .abbr {
-    color: #a0a0a0 !important; 
+  [data-theme="dark"] .abbr,
+  [data-theme="dark"] span.date { 
+    color: #a0a0a0 !important; /* 强制保持浅灰 */
   }
-  /* 奖项保持原色 (通常是红色) 或跟随文字 */
+  
+  /* 保护 Award (红色) */
+  /* 我们不强制设色，而是允许它使用自己的颜色，或者如果它是 span class="award"，则继承原色 */
   [data-theme="dark"] .award {
-     color: inherit !important;
+     color: inherit !important; /* 如果原样式有 color，这里不动它；或者你可以手动指定红色 */
   }
 
 
-  /* --- 5. 布局优化 (保持不变) --- */
+  /* --- 6. 布局优化 (保持不变) --- */
   
   body { padding-top: 56px !important; }
   @media (min-width: 768px) {
