@@ -151,75 +151,58 @@
 <style>
   /* --- 1. 全局字重统一 (Global Font Weight) --- */
   
-  /* 【核心修复】将所有可能的文本容器全部强制设为 400 (标准) */
-  /* 包含：正文、列表、表格内容(td)、导航链接(a)、以及通用的 div/span */
+  /* 【正文 & 列表 & 表格】统一设为 400 (标准) */
   body, p, li, div, td, th, span, a, .desc {
     font-weight: 400 !important; 
+    color: #333333; /* 柔和黑 */
   }
 
-  /* 【特例】标题保持 300 (细体)，显高级 */
-  /* 也就是 "Publications", "Awards", "Yangyang Luan" 这些 */
-  h1, h2, h3, h4, .post-title, .navbar-brand {
-    font-weight: 300 !important;
+  /* 【关键修改】标题不再用 300 (细体)，全部加固为 400 (标准) */
+  /* 这解决了 "Awards", "Academic Services" 太细的问题 */
+  h1, h2, h3, h4, h5, h6, .post-title, .navbar-brand {
+    font-weight: 400 !important; /* 从 300 改回 400，扎实！ */
+    color: #222222; /* 标题颜色稍深，增加层次 */
   }
   
-  /* 【特例】名字强调部分 "Yangyang" */
+  /* 【名字强调】 "Yangyang" 保持 500 (中等) */
   .post-title strong, .navbar-brand b {
     font-weight: 500 !important;
   }
 
 
-  /* --- 2. 导航栏字体修复 (Navbar Fix) --- */
+  /* --- 2. 导航栏字体修复 --- */
   
-  /* 强制导航栏菜单项 (About, Pubs, Awards) 变粗，不再是细体 */
+  /* 导航栏链接也统一为 400，确保 "About" 等看起来不飘 */
   .navbar-nav .nav-item .nav-link {
     font-weight: 400 !important;
-    font-size: 1rem !important; /* 确保和正文一样大 */
-    color: #333333; /* 默认颜色柔和黑 */
+    font-size: 1rem !important; 
+    color: #333333; 
   }
 
 
-  /* --- 3. News 列表与表格修复 (Table & News Fix) --- */
+  /* --- 3. News 列表修复 --- */
   
-  /* 强制 News 里的日期和内容字号、粗细完全一致 */
   .news table td, .news table th {
-    font-size: 1rem !important;      /* 修复：以前是 0.8rem，现在放大到 1rem */
-    font-weight: 400 !important;     /* 修复：以前是细体，现在变标准 */
+    font-size: 1rem !important;      
+    font-weight: 400 !important;     
     font-family: inherit !important; 
     vertical-align: top !important;  
   }
   
-  /* 给日期列留出呼吸空间 */
   .news table td:first-child {
     min-width: 120px !important; 
     padding-right: 20px !important;
   }
 
 
-  /* --- 4. 颜色安全控制 (Color Safety) --- */
-  
-  /* 只设置基础颜色，不使用 !important 覆盖所有 span，从而保护灰色年份和红色奖项 */
-  body {
-    color: #333333; /* 全局基底柔和黑 */
-  }
-  p, li, td {
-    color: #333333; /* 确保主要文本是柔和黑 */
-  }
-  
-  /* 标题颜色 */
-  h1, h2, h3, .post-title {
-    color: #222222;
-  }
-
-
-  /* --- 5. 暗色模式完美适配 (Dark Mode) --- */
+  /* --- 4. 暗色模式完美适配 (Dark Mode) --- */
   
   /* 基础反色 */
   [data-theme="dark"] body { color: #e0e0e0 !important; }
   [data-theme="dark"] p,
   [data-theme="dark"] li,
   [data-theme="dark"] .desc,
-  [data-theme="dark"] td { /* 加上 td，确保表格里的字变白 */
+  [data-theme="dark"] td { 
     color: #e0e0e0 !important;
   }
 
@@ -227,6 +210,7 @@
   [data-theme="dark"] h1, 
   [data-theme="dark"] h2, 
   [data-theme="dark"] h3, 
+  [data-theme="dark"] h4, 
   [data-theme="dark"] .post-title,
   [data-theme="dark"] .navbar-brand {
     color: #ffffff !important;
@@ -234,7 +218,7 @@
   
   /* 导航栏反色 */
   [data-theme="dark"] .navbar-nav .nav-item .nav-link {
-    color: #e0e0e0 !important; /* 强制变白 */
+    color: #e0e0e0 !important; 
   }
   
   /* 链接颜色 */
@@ -247,14 +231,10 @@
     text-decoration: underline;
   }
   
-  /* 保护特殊元素 (年份/奖项) 在暗色模式下可见 */
+  /* 保护特殊元素 (年份/奖项) */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr {
-    color: #a0a0a0 !important; /* 浅灰，不要太黑 */
-  }
-  [data-theme="dark"] .award {
-    /* 假设奖项有特殊类名，如果没有，默认继承文字颜色也行 */
-    /* color: #ff6b6b !important; (如果需要红色的奖项变亮一点可以加这个) */
+    color: #a0a0a0 !important; 
   }
 
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
