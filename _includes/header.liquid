@@ -101,6 +101,39 @@
               {% endif %}
             {% endif %}
           {% endfor %}
+<li class="nav-item">
+            <a class="nav-link" href="{{ '/assets/pdf/cv.pdf' | relative_url }}" target="_blank">CV</a>
+          </li>
+          ```
+
+**修改后的 `_includes/header.liquid` 结尾部分应该是这样的：**
+
+```liquid
+          {% endif %}
+          {% endfor %}  <li class="nav-item">
+            <a class="nav-link" href="{{ '/assets/pdf/cv.pdf' | relative_url }}" target="_blank">CV</a>
+          </li>
+
+          {% if site.search_enabled %}
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          {% endif %}
+          
+          {% if site.enable_darkmode %}
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
           {% if site.search_enabled %}
             <li class="nav-item">
               <button id="search-toggle" title="Search" onclick="openSearchModal()">
