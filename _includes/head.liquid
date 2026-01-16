@@ -149,41 +149,49 @@
 {% endif %}
 
 
-/* --- 1. 全局字重与颜色 (Typography) --- */
+<style>
+  /* =======================================================
+     【V13.0 修复乱码 & 最终精调版】
+     1. 修复乱码：代码已包裹在 style 标签中
+     2. 大标题 (H1) -> 设为 300 (细体)，解决“稍微有点粗”
+     3. 正文 & 小标题 -> 设为 400 (标准)，保持清晰扎实
+     4. 暗色模式 -> 强力修复“看不清”的问题
+     ======================================================= */
+
+  /* --- 1. 全局字重与颜色 (Typography) --- */
   
-  /* 【正文基准】 */
-  /* 涵盖所有容器，确保所有文字默认都是 400 */
+  /* 【正文基准】所有内容默认使用 400 (标准) */
+  /* 解决“正文太细”的问题 */
   body, p, li, div, td, th, span, a, .desc {
     font-weight: 400 !important; 
     color: #333333; /* 柔和黑 */
   }
 
-  /* 【大标题 (Page Titles)】 -> 降级为 300 */
-  /* 解决 "Yangyang Luan", "Publications" 看起来太粗的问题 */
+  /* 【大标题 (Page Titles)】 -> 降级为 300 (细体) */
+  /* 解决 "Yangyang Luan", "Publications" 看起来有点粗的问题 */
   h1, .post-title, .navbar-brand {
-    font-weight: 300 !important; /* 细体，配合大字号更优雅 */
+    font-weight: 300 !important; 
     color: #222222; 
   }
 
-  /* 【小标题 (Section Headers)】 -> 保持 400 */
-  /* 解决 "Awards", "News" 等不应该比正文细的要求 */
+  /* 【小标题 (Section Headers)】 -> 保持 400 (标准) */
+  /* 解决 "Awards", "News" 不应比正文细的问题 */
   h2, h3, h4, h5, h6 {
-    font-weight: 400 !important; /* 标准粗细，与正文一致，依靠字号区分层级 */
+    font-weight: 400 !important; 
     color: #222222;
   }
   
-  /* 【名字强调】 "Yangyang" */
-  /* 既然大标题是 300，这里稍微加一点点重到 400 即可区分，或者 500 */
-  /* 这里设为 400，让它比 "Luan" (300) 稍微实一点，但不会突兀 */
+  /* 【名字强调】 "Yangyang" 微调 */
+  /* 配合 300 的大标题，这里给 400 刚好有层次感 */
   .post-title strong, .navbar-brand b {
     font-weight: 400 !important; 
   }
 
 
-  /* --- 2. 导航栏字体修复 --- */
+  /* --- 2. 导航栏修复 (Navbar) --- */
   
   .navbar-nav .nav-item .nav-link {
-    font-weight: 400 !important; /* 保持标准粗细 */
+    font-weight: 400 !important; 
     font-size: 1rem !important; 
     color: #333333; 
   }
@@ -204,16 +212,17 @@
   }
 
 
-  /* --- 4. 暗色模式修复 (Dark Mode Fix) --- */
+  /* --- 4. 暗色模式强力修复 (Dark Mode Fix) --- */
   
-  /* 【关键修复】之前的代码漏掉了 div，导致 Bio 区域文字发灰 */
-  /* 这里强制把所有常见文本容器在暗色模式下变白 */
+  /* 【关键修复】使用通配符强制覆盖所有文本容器 */
+  /* 这解决了 "Publications" 列表里作者名字发黑看不清的问题 */
   [data-theme="dark"] body,
   [data-theme="dark"] p,
   [data-theme="dark"] li,
   [data-theme="dark"] .desc,
   [data-theme="dark"] td,
-  [data-theme="dark"] div { /* 加入 div，修复个人简介颜色 */
+  [data-theme="dark"] div,
+  [data-theme="dark"] span { 
     color: #e0e0e0 !important;
   }
 
@@ -232,7 +241,7 @@
     color: #e0e0e0 !important; 
   }
   
-  /* 链接颜色 */
+  /* 链接颜色 (静谧蓝) */
   [data-theme="dark"] a {
     color: #58a6ff !important; 
     text-decoration: none;
@@ -242,10 +251,16 @@
     text-decoration: underline;
   }
   
-  /* 保护特殊元素 (年份/奖项) 保持原色 */
+  /* 保护特殊元素 (年份/奖项) 不被上面的通配符覆盖 */
+  /* 这里使用更高的优先级让它们保持灰色 */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr {
     color: #a0a0a0 !important; 
+  }
+  
+  /* 保护奖项 Award 的红色 (如果有的话) 或保持可见 */
+  [data-theme="dark"] .award {
+     color: inherit !important; /* 跟随文字颜色，或者你可以指定特殊颜色 */
   }
 
 
