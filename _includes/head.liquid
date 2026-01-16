@@ -154,7 +154,7 @@
   /* 【正文】保持你满意的“正常”粗细 */
   /* 解决“正文太细”的问题：让阅读内容扎实清楚 */
   body, p, li, div, td, span, .desc {
-    font-weight: 400 !important; /* Regular (标准) */
+    font-weight: 350 !important; /* Regular (标准) */
   }
 
   /* 【大标题】回归“清秀/细体” */
@@ -171,7 +171,24 @@
   .post-title .font-weight-bold,
   .navbar-brand strong, 
   .navbar-brand b {
-    font-weight: 500 !important; /* Medium (中等) - 比 Luan 稍微粗一点点，但绝不臃肿 */
+    font-weight: 450 !important; /* Medium (中等) - 比 Luan 稍微粗一点点，但绝不臃肿 */
+  }
+
+  /* --- 2. News 列表完美修正 (Fix News Date & Font) --- */
+  /* 解决日期字号小、字体不统一的问题 */
+  
+  .news table td, .news table th {
+    font-size: 1rem !important;    /* 强制跟正文一样大 (1rem 通常等于 16px) */
+    font-weight: 400 !important;   /* 强制跟正文一样粗 */
+    font-family: inherit !important; /* 强制继承全局字体，防止变成奇怪的默认字体 */
+    vertical-align: top !important; /* 让日期和文字顶部对齐，更整齐 */
+    color: inherit !important;     /* 防止日期颜色太浅看不清 */
+  }
+  
+  /* 给日期那一列专门加一点右边距，防止挨得太近 */
+  .news table td:first-child {
+    padding-right: 20px !important;
+    min-width: 120px !important; /* 保证日期列有足够宽度，不换行 */
   }
 
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
