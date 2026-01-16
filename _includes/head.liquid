@@ -149,57 +149,81 @@
 {% endif %}
 
 <style>
-  /* --- 1. 字体粗细 (Font Weight) --- */
+  /* --- 1. 全局字重统一 (Global Font Weight) --- */
   
-  /* 全局字重设为 400 (标准)，解决“太细”问题 */
-  body {
-    font-weight: 400 !important;
+  /* 【核心修复】将所有可能的文本容器全部强制设为 400 (标准) */
+  /* 包含：正文、列表、表格内容(td)、导航链接(a)、以及通用的 div/span */
+  body, p, li, div, td, th, span, a, .desc {
+    font-weight: 400 !important; 
   }
-  
-  /* 标题保持 300 (细体)，保持高级感 */
+
+  /* 【特例】标题保持 300 (细体)，显高级 */
+  /* 也就是 "Publications", "Awards", "Yangyang Luan" 这些 */
   h1, h2, h3, h4, .post-title, .navbar-brand {
     font-weight: 300 !important;
   }
   
-  /* 名字强调部分保持 500 */
+  /* 【特例】名字强调部分 "Yangyang" */
   .post-title strong, .navbar-brand b {
     font-weight: 500 !important;
   }
 
 
-  /* --- 2. 颜色控制 (The Fix) --- */
+  /* --- 2. 导航栏字体修复 (Navbar Fix) --- */
   
-  /* 【关键修改】只改变主要容器的颜色，不使用 !important 覆盖 span */
-  /* 这样年份(灰色)、奖项(红色)原本的 CSS 样式就不会被我们覆盖掉 */
-  body {
-    color: #333333; /* 柔和黑作为基底 */
-  }
-  
-  /* 确保段落文字也是柔和黑 */
-  p, li {
-    color: #333333;
+  /* 强制导航栏菜单项 (About, Pubs, Awards) 变粗，不再是细体 */
+  .navbar-nav .nav-item .nav-link {
+    font-weight: 400 !important;
+    font-size: 1rem !important; /* 确保和正文一样大 */
+    color: #333333; /* 默认颜色柔和黑 */
   }
 
-  /* 标题稍微深一点 */
+
+  /* --- 3. News 列表与表格修复 (Table & News Fix) --- */
+  
+  /* 强制 News 里的日期和内容字号、粗细完全一致 */
+  .news table td, .news table th {
+    font-size: 1rem !important;      /* 修复：以前是 0.8rem，现在放大到 1rem */
+    font-weight: 400 !important;     /* 修复：以前是细体，现在变标准 */
+    font-family: inherit !important; 
+    vertical-align: top !important;  
+  }
+  
+  /* 给日期列留出呼吸空间 */
+  .news table td:first-child {
+    min-width: 120px !important; 
+    padding-right: 20px !important;
+  }
+
+
+  /* --- 4. 颜色安全控制 (Color Safety) --- */
+  
+  /* 只设置基础颜色，不使用 !important 覆盖所有 span，从而保护灰色年份和红色奖项 */
+  body {
+    color: #333333; /* 全局基底柔和黑 */
+  }
+  p, li, td {
+    color: #333333; /* 确保主要文本是柔和黑 */
+  }
+  
+  /* 标题颜色 */
   h1, h2, h3, .post-title {
     color: #222222;
   }
 
 
-  /* --- 3. 暗色模式急救 (Dark Mode Rescue) --- */
+  /* --- 5. 暗色模式完美适配 (Dark Mode) --- */
   
-  /* 强制覆盖回原来的颜色逻辑 */
-  [data-theme="dark"] body {
-    color: #e0e0e0 !important; /* 正文变回灰白 */
-  }
-  
+  /* 基础反色 */
+  [data-theme="dark"] body { color: #e0e0e0 !important; }
   [data-theme="dark"] p,
   [data-theme="dark"] li,
-  [data-theme="dark"] .desc {
-    color: #e0e0e0 !important; /* 列表和段落变回灰白 */
+  [data-theme="dark"] .desc,
+  [data-theme="dark"] td { /* 加上 td，确保表格里的字变白 */
+    color: #e0e0e0 !important;
   }
 
-  /* 标题变白 */
+  /* 标题反色 */
   [data-theme="dark"] h1, 
   [data-theme="dark"] h2, 
   [data-theme="dark"] h3, 
@@ -208,7 +232,12 @@
     color: #ffffff !important;
   }
   
-  /* 链接颜色 (保持你的静谧蓝) */
+  /* 导航栏反色 */
+  [data-theme="dark"] .navbar-nav .nav-item .nav-link {
+    color: #e0e0e0 !important; /* 强制变白 */
+  }
+  
+  /* 链接颜色 */
   [data-theme="dark"] a {
     color: #58a6ff !important; 
     text-decoration: none;
@@ -218,33 +247,14 @@
     text-decoration: underline;
   }
   
-  /* 保护导航栏链接颜色 */
-  [data-theme="dark"] .navbar a,
-  [data-theme="dark"] .profile .more-info a {
-    color: inherit !important;
-  }
-  
-  /* 【关键】修复暗色模式下的年份和元数据 */
-  /* 让它们变回原本的浅灰色，而不是死黑 */
+  /* 保护特殊元素 (年份/奖项) 在暗色模式下可见 */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr {
-    color: #a0a0a0 !important;
+    color: #a0a0a0 !important; /* 浅灰，不要太黑 */
   }
-
-
-  /* --- 4. News 列表修正 (仅调整大小，不碰颜色) --- */
-  
-  .news table td {
-    font-size: 1rem !important;    
-    font-weight: 400 !important;   
-    font-family: inherit !important; 
-    vertical-align: top !important; 
-    /* 删除了 color设置，让它自动继承或使用原本的灰色 */
-  }
-  
-  .news table td:first-child {
-    padding-right: 20px !important;
-    min-width: 120px !important; 
+  [data-theme="dark"] .award {
+    /* 假设奖项有特殊类名，如果没有，默认继承文字颜色也行 */
+    /* color: #ff6b6b !important; (如果需要红色的奖项变亮一点可以加这个) */
   }
 
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
