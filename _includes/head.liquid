@@ -151,44 +151,42 @@
 
 <style>
   /* =======================================================
-     【V13.0 修复乱码 & 最终精调版】
-     1. 修复乱码：代码已包裹在 style 标签中
-     2. 大标题 (H1) -> 设为 300 (细体)，解决“稍微有点粗”
-     3. 正文 & 小标题 -> 设为 400 (标准)，保持清晰扎实
-     4. 暗色模式 -> 强力修复“看不清”的问题
+     【V14.0 最终完美修正版】
+     1. Yangyang 微调：从 500 降为 400，实现“只粗一点点”的效果
+     2. News 日期修复：暗色模式下强制变亮，不再看不清
+     3. 全局统一：正文 400，大标题 300，完美平衡
      ======================================================= */
 
   /* --- 1. 全局字重与颜色 (Typography) --- */
   
   /* 【正文基准】所有内容默认使用 400 (标准) */
-  /* 解决“正文太细”的问题 */
   body, p, li, div, td, th, span, a, .desc {
     font-weight: 400 !important; 
     color: #333333; /* 柔和黑 */
   }
 
-  /* 【大标题 (Page Titles)】 -> 降级为 300 (细体) */
-  /* 解决 "Yangyang Luan", "Publications" 看起来有点粗的问题 */
+  /* 【大标题 (H1)】 -> 300 (细体) */
+  /* "Luan", "Publications" 等大字保持细体优雅感 */
   h1, .post-title, .navbar-brand {
     font-weight: 300 !important; 
     color: #222222; 
   }
 
-  /* 【小标题 (Section Headers)】 -> 保持 400 (标准) */
-  /* 解决 "Awards", "News" 不应比正文细的问题 */
+  /* 【小标题 (H2-H6)】 -> 400 (标准) */
+  /* "Awards", "News" 等保持扎实 */
   h2, h3, h4, h5, h6 {
     font-weight: 400 !important; 
     color: #222222;
   }
   
-  /* 【名字强调】 "Yangyang" 微调 */
-  /* 配合 300 的大标题，这里给 400 刚好有层次感 */
+  /* 【名字微调】 "Yangyang" -> 设为 400 */
+  /* 解释：Luan 是 300，Yangyang 是 400。这是字体里最小的级差，只粗一点点 */
   .post-title strong, .navbar-brand b {
     font-weight: 400 !important; 
   }
 
 
-  /* --- 2. 导航栏修复 (Navbar) --- */
+  /* --- 2. 导航栏修复 --- */
   
   .navbar-nav .nav-item .nav-link {
     font-weight: 400 !important; 
@@ -214,19 +212,17 @@
 
   /* --- 4. 暗色模式强力修复 (Dark Mode Fix) --- */
   
-  /* 【关键修复】使用通配符强制覆盖所有文本容器 */
-  /* 这解决了 "Publications" 列表里作者名字发黑看不清的问题 */
+  /* 基础反色：正文变亮灰 */
   [data-theme="dark"] body,
   [data-theme="dark"] p,
   [data-theme="dark"] li,
   [data-theme="dark"] .desc,
-  [data-theme="dark"] td,
   [data-theme="dark"] div,
   [data-theme="dark"] span { 
     color: #e0e0e0 !important;
   }
 
-  /* 标题反色 */
+  /* 标题变纯白 */
   [data-theme="dark"] h1, 
   [data-theme="dark"] h2, 
   [data-theme="dark"] h3, 
@@ -236,12 +232,16 @@
     color: #ffffff !important;
   }
   
-  /* 导航栏反色 */
+  /* 【关键修复】News 日期在暗色模式下强制变亮 */
+  /* 之前看不清是因为它继承了特殊的灰色，这里强制改为 #e0e0e0 */
+  [data-theme="dark"] .news table td {
+    color: #e0e0e0 !important;
+  }
+  
+  /* 导航栏与链接修复 */
   [data-theme="dark"] .navbar-nav .nav-item .nav-link {
     color: #e0e0e0 !important; 
   }
-  
-  /* 链接颜色 (静谧蓝) */
   [data-theme="dark"] a {
     color: #58a6ff !important; 
     text-decoration: none;
@@ -251,16 +251,15 @@
     text-decoration: underline;
   }
   
-  /* 保护特殊元素 (年份/奖项) 不被上面的通配符覆盖 */
-  /* 这里使用更高的优先级让它们保持灰色 */
+  /* 保护特殊元素 (年份/奖项) */
+  /* 年份保持浅灰，不要太亮以免抢眼 */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr {
     color: #a0a0a0 !important; 
   }
-  
-  /* 保护奖项 Award 的红色 (如果有的话) 或保持可见 */
+  /* 奖项保持原色 (通常是红色) 或跟随文字 */
   [data-theme="dark"] .award {
-     color: inherit !important; /* 跟随文字颜色，或者你可以指定特殊颜色 */
+     color: inherit !important;
   }
 
 
