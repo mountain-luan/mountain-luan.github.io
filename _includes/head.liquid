@@ -149,136 +149,39 @@
 {% endif %}
 
 <style>
-  /* --- 1. 全局字体与排版 (Georgia Core) --- */
+  /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
   
-  /* 核心字体栈 */
-  body, p, li, div, a, span, 
-  table, td, th, tr, tbody, thead, /* 穷举表格元素，确保 News 无死角 */
-  h1, h2, h3, h4, h5, h6, 
-  .post-title, .post-description, .navbar-brand {
-    font-family: Georgia, "Times New Roman", Times, serif !important;
-  }
-
-  /* 正文样式 */
-  body, p, li, td, th {
-    font-size: 17px !important;    /* 统一字号 */
-    line-height: 1.6 !important;   /* 舒适行高 */
-    font-weight: 400 !important;   /* 标准粗细，不要加粗 */
-  }
-
-  /* 标题样式 - 减重版 */
-  /* Georgia 字体本身很有分量，不需要 600/700 的粗度，normal 400 足以 */
-  h1, h2, h3, .post-title {
-    font-weight: normal !important; /* 关键修改：去肥增瘦 */
-    color: #000000 !important;      /* 纯黑标题，增加质感 */
-  }
-  
-  /* 导航栏左上角名字 (Navbar Brand) */
-  .navbar-brand {
-    font-weight: normal !important; /* 这里的名字也不要太粗 */
-    font-size: 20px !important;     /* 稍微大一点点 */
-  }
-
-
-  /* --- 2. News 列表完美统一 --- */
-  
-  .news table td, .news table th {
-    font-size: 17px !important;    /* 强制日期和内容一样大 */
-    font-family: Georgia, "Times New Roman", Times, serif !important;
-    vertical-align: top !important; /* 顶部对齐，更整齐 */
-    padding-bottom: 10px !important; /* 增加一点行间距 */
-  }
-  
-  /* 修复可能的日期颜色过浅问题 */
-  .news table td:first-child {
-    color: inherit !important;     /* 保持颜色一致，或者你可以设为 #333 */
-    font-weight: normal !important;
-    padding-right: 20px !important; /* 日期和内容的间距 */
-  }
-
-
-  /* --- 3. 导航栏绝对垂直居中 (Vertical Align) --- */
-  
-  /* 容器 Flex 化 */
-  .navbar .container {
-    display: flex !important;
-    align-items: center !important;
-    height: 60px !important; /* 锁定导航栏高度 */
-  }
-
-  /* 链接区域 */
-  .navbar-nav {
-    display: flex !important;
-    align-items: center !important;
-    height: 100% !important;
-  }
-
-  /* 单个链接 */
-  .navbar-nav li.nav-item {
-    display: flex !important;
-    align-items: center !important;
-    height: 100% !important;
-  }
-  
-  /* 链接文字 */
-  .navbar-nav li.nav-item a {
-    display: flex !important;
-    align-items: center !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    height: 100% !important;
-  }
-
-  /* 【关键】修复开关灯按钮位置 */
-  button#light-toggle {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 0 0 10px !important; /* 左侧留点距离 */
-    padding: 0 !important;
-    height: 30px !important; /* 给按钮固定高度 */
-    width: 30px !important;
-    position: relative !important;
-    top: 0px !important; /* 微调：如果还觉得歪，改这个数值，支持负数 */
-  }
-  
-  /* 修正图标本身的位置 */
-  button#light-toggle i {
-    position: relative !important;
-    top: -1px !important; /* 有时候图标字体的基线偏下，往上提1px */
-  }
-
-
-  /* --- 4. 页面标题位置固定 (Anchor Locking) --- */
-  
-  /* 统一所有页面的顶部间距策略 */
+  /* Body 预留高度：只留出导航栏的物理高度，一点不多留 */
   body {
-    padding-top: 65px !important; /* 留出导航栏高度 */
+    padding-top: 56px !important; /* 移动端导航栏标准高度 */
+  }
+  @media (min-width: 768px) {
+    body {
+      padding-top: 60px !important; /* 电脑端导航栏高度，设为紧凑值 */
+    }
   }
 
-  /* 核心布局锁定：所有页面的 H1 标题位置完全一致 */
-  .post-header, .post-content {
+  /* 核心：清除容器和标题的所有上方边距 */
+  .container, 
+  div.post, 
+  .post-header {
+    padding-top: 0px !important;
     margin-top: 0px !important;
-    padding-top: 20px !important; /* 使用 padding 撑开，而不是 margin */
   }
   
-  /* Home页、Pubs页、About页 的 H1 标题 */
-  .post-title, 
-  h1.post-title,
-  header.post-header h1 {
-    margin-top: 0px !important;
-    margin-bottom: 10px !important;
-    line-height: 1.2 !important;
-    /* 确保不论在哪个页面，它都从容器顶部相同位置开始 */
+  /* 调整标题的位置 */
+  .post-title {
+    margin-top: 15px !important; /* 距离导航栏底部的距离，这里设为 10px，非常紧凑 */
+    margin-bottom: 5px !important; /* 名字和下方副标题的距离 */
   }
   
-  /* 修复 Home 页面可能的 Profile 干扰 */
-  .post {
-    clear: both !important; /* 清除浮动干扰 */
+  /* 调整副标题 (Subtitle) 的位置 */
+  .post-description, .desc {
+    margin-bottom: 20px !important; /* 副标题和正文的距离 */
   }
 
 
-  /* --- 5. 移动端布局 (保持不变) --- */
+  /* --- 2. 移动端布局 (左对齐 + 缩小) --- */
   @media (max-width: 768px) {
     .profile {
       width: 100% !important;
@@ -286,38 +189,62 @@
       display: block !important;
       margin-bottom: 15px !important;
     }
+    
     .profile img {
-      width: 130px !important; 
-      max-width: 130px !important;
-      margin: 0 !important;
+      width: 150px !important; 
+      max-width: 150px !important;
+      margin: 0 !important;    /* 靠左 */
       display: block;
     }
+    
     .profile .more-info div {
        justify-content: flex-start !important;
        padding-left: 2px !important;
     }
-    /* 移动端标题稍微小一点，避免换行太丑 */
-    .post-title {
-      font-size: 28px !important;
-    }
   }
 
-  /* --- 6. 电脑端图片 (保持不变) --- */
+
+  /* --- 3. 电脑端布局 (防止位移) --- */
   @media (min-width: 769px) {
     .profile {
-      width: 23% !important; /* 稍微宽一点点，适应 Georgia */
+      width: 20% !important;
       max-width: 250px;
-      margin-right: 35px;
+      margin-right: 30px;
       float: left !important;
     }
   }
 
-  /* --- 7. 配色 (保持不变) --- */
-  [data-theme="dark"] a { color: #58a6ff !important; text-decoration: none; }
-  [data-theme="dark"] a:hover { color: #79c0ff !important; text-decoration: underline; }
-  [data-theme="dark"] h1 a, [data-theme="dark"] h2 a, [data-theme="dark"] h3 a,
-  [data-theme="dark"] .navbar a, [data-theme="dark"] .profile .more-info a {
-    color: inherit !important; text-decoration: none !important;
+
+  /* --- 4. 暗色模式配色优化 (Smart Dark Mode) --- */
+  
+  /* 通用链接：静谧蓝 */
+  [data-theme="dark"] a {
+    color: #58a6ff !important; 
+    text-decoration: none;
   }
-  html { overflow-y: scroll; }
+  [data-theme="dark"] a:hover {
+    color: #79c0ff !important;
+    text-decoration: underline;
+  }
+
+  /* 【修复】News 标题保持原色 */
+  /* 规则：如果是 H1, H2, H3 里的链接，不要变蓝，跟随标题颜色 */
+  [data-theme="dark"] h1 a,
+  [data-theme="dark"] h2 a,
+  [data-theme="dark"] h3 a {
+    color: inherit !important; 
+    text-decoration: none !important;
+  }
+
+  /* 保护导航栏和图标 */
+  [data-theme="dark"] .navbar a,
+  [data-theme="dark"] .profile .more-info a {
+    color: inherit !important;
+  }
+
+
+  /* --- 5. 滚动条稳定 --- */
+  html {
+    overflow-y: scroll;
+  }
 </style>
