@@ -149,6 +149,28 @@
 {% endif %}
 
 <style>
+  /* --- 0. 字体粗细微调 (Font Weight Tuning) --- */
+  
+  /* 1. 正文加粗：从“细体”变为“标准” */
+  /* 解决“正文太细”的问题 */
+  body, p, li, div, td, span {
+    font-weight: 400 !important; /* 400 = Regular (标准)，原主题默认是 300 (Light) */
+  }
+
+  /* 2. 首页名字减重：从“特粗”变为“中等” */
+  /* 解决“Yangyang太粗”的问题 */
+  .post-title, h1 {
+    font-weight: 400 !important; /* 标题基准设为标准 */
+  }
+  
+  /* 专门针对被加粗的部分 (即 Yangyang) */
+  /* 强制把加粗效果从 700 降为 500 (Medium) 或 600 (Semi-Bold) */
+  .post-title strong, 
+  .post-title b, 
+  .post-title .font-weight-bold {
+    font-weight: 500 !important; /* 这里控制"Yangyang"的粗细，500比较优雅 */
+  }
+
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
   
   /* Body 预留高度：只留出导航栏的物理高度，一点不多留 */
