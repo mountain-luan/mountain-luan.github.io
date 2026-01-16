@@ -29,5 +29,5 @@ I am currently a Ph.D. candidate at the School of Mathematics and Statistics, Wu
 
 My research interests lie at the intersection of **Network Science** and **Control Theory**, with a particular focus on **Multi-agent Systems**. Currently, I primarily focus on **Opinion Dynamics**, investigating the evolution of complex opinions and the emergence of collective behaviors (e.g., consensus and polarization) over social networks. To address these problems, I integrate **control-theoretic modeling** to uncover the mathematical mechanisms behind social phenomena with **data-driven applications** that validate sociological hypotheses against real-world user interactions. Previously, I also worked on network synchronization, link prediction, and influential spreader identification.
 
-If you are interested in my research topics, you are more than welcome to contact me via email at [luanyy_1704@whu.edu.cn](mailto:luanyy_1704@whu.edu.cn) (preferred) or [yyluan1999@gmail.com](mailto:yyluan1999@gmail.com).
+If you are interested in my research topics, please contact me via email at [luanyy_1704@whu.edu.cn](mailto:luanyy_1704@whu.edu.cn) (preferred) or [yyluan1999@gmail.com](mailto:yyluan1999@gmail.com).
 
