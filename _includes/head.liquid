@@ -151,55 +151,55 @@
 
 <style>
   /* =======================================================
-     【V16.0 逻辑分离修复版】
-     策略：将“粗细”和“颜色”的控制权完全分开。
-     1. 粗细：暴力强制 400，解决 Awards 变细的问题。
-     2. 颜色：温柔继承，只修背景字，不盖特殊色。
+     【V17.0 最终配色统一版】
+     1. 颜色升级：Awards/Academic Services 颜色加深，与大标题(#222222)一致
+     2. 粗细保持：大标题细(300)，其余全部标准(400)
+     3. 逻辑分离：颜色与粗细互不干扰，暗色模式完美兼容
      ======================================================= */
 
   /* --- PART A: 字体粗细控制 (Font Weight ONLY) --- */
-  /* 这里我们“火力全开”，把所有可能的标签都拉进来设为 400 */
-  /* 因为粗细不会影响颜色，所以这里包含 span/div 是安全的 */
+  /* 粗细规则保持不变：除了大标题，其余全员 400 */
+  
+  /* 1. 强制标准粗细 (400) - 覆盖几乎所有元素 */
   body, p, li, div, td, th, span, a, .desc, .award, .periodical {
-    font-weight: 400 !important; /* 强制标准粗细，拒绝细体 */
+    font-weight: 400 !important; 
   }
 
-  /* 例外 1：大标题保持细体 (300) */
+  /* 2. 例外：大标题保持细体 (300) - 显高级 */
   h1, .post-title, .navbar-brand {
     font-weight: 300 !important; 
   }
   
-  /* 例外 2：小标题保持标准 (400) */
+  /* 3. 例外：小标题保持标准 (400) - 显扎实 */
   h2, h3, h4, h5, h6 {
     font-weight: 400 !important; 
   }
 
-  /* 例外 3：名字 "Yangyang" 微调 (400) */
+  /* 4. 例外：名字 "Yangyang" 微调 (400) */
   .post-title strong, 
   .post-title b, 
   .navbar-brand b,
   .navbar-brand strong {
-    font-weight: 300 !important; 
+    font-weight: 200 !important; 
   }
 
 
   /* --- PART B: 颜色控制 (Color ONLY) --- */
-  /* 这里我们“小心翼翼”，只设置基础文本颜色 */
+  /* 【修改点】：将 h2-h6 移入深色标题组 */
 
-  /* 1. 亮色模式基础色 */
-  body {
-    color: #333333; /* 柔和黑 */
-  }
-  /* 确保常用文本容器继承这个颜色 */
-  p, li, h2, h3, h4, h5, h6, .desc {
+  /* 1. 亮色模式基础色 (柔和黑 #333333) */
+  /* 仅用于正文、列表、描述 */
+  body, p, li, .desc {
     color: #333333;
   }
-  /* 大标题颜色稍深 */
-  h1, .post-title, .navbar-brand {
+
+  /* 2. 标题颜色组 (深黑色 #222222) */
+  /* 【修改】现在 h1 到 h6 全部使用同一个深色，视觉更统一 */
+  h1, h2, h3, h4, h5, h6, .post-title, .navbar-brand {
     color: #222222;
   }
   
-  /* 导航栏链接 */
+  /* 3. 导航栏链接 (跟随正文柔和黑) */
   .navbar-nav .nav-item .nav-link {
     font-size: 1rem !important; 
     color: #333333; 
@@ -211,7 +211,6 @@
   .news table td, .news table th {
     font-size: 1rem !important;      
     vertical-align: top !important;
-    /* 粗细已经在 PART A 设置了，这里不用管 */
   }
   
   .news table td:first-child {
@@ -222,22 +221,23 @@
 
   /* --- PART D: 暗色模式 (Dark Mode) --- */
   
-  /* 1. 基础文字变白 (覆盖常见容器) */
-  /* 注意：这里不包含 span，以免误伤特殊颜色的行内元素 */
+  /* 1. 基础文字变白 (不含 span) */
   [data-theme="dark"] body,
   [data-theme="dark"] p,
   [data-theme="dark"] li,
   [data-theme="dark"] .desc,
-  [data-theme="dark"] div,  /* 修复 Bio */
-  [data-theme="dark"] td {  /* 修复 News/Awards 表格文字 */
+  [data-theme="dark"] div, 
+  [data-theme="dark"] td {  
     color: #e0e0e0 !important;
   }
 
-  /* 2. 标题变纯白 */
+  /* 2. 所有标题变纯白 */
   [data-theme="dark"] h1, 
   [data-theme="dark"] h2, 
   [data-theme="dark"] h3, 
   [data-theme="dark"] h4, 
+  [data-theme="dark"] h5, 
+  [data-theme="dark"] h6, 
   [data-theme="dark"] .post-title,
   [data-theme="dark"] .navbar-brand {
     color: #ffffff !important;
@@ -258,17 +258,12 @@
     text-decoration: underline;
   }
 
-  /* 5. 颜色保护区 (Color Protection) */
-  
-  /* 强制年份、缩写保持灰色 (否则会被上面的 div 覆盖) */
+  /* 5. 颜色保护区 (年份/奖项保持原色) */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr,
   [data-theme="dark"] span.date { 
     color: #a0a0a0 !important; 
   }
-
-  /* 强制 Award 保持原色 (通常是红色) */
-  /* 使用 inherit 让它穿透 dark mode 的覆盖 */
   [data-theme="dark"] .award {
      color: inherit !important;
   }
