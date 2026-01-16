@@ -11,11 +11,11 @@ profile:
   
   more_info: >
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; margin-top: 10px; gap: 10px;">
-      <a href="/assets/pdf/cv.pdf" target="_blank" style="color: var(--global-theme-color); font-weight: 800; font-size: 1.4rem; text-decoration: none; font-family: 'Roboto', sans-serif; line-height: 1;">CV</a>
       <a href="mailto:luanyy_1704@whu.edu.cn" style="color: var(--global-theme-color);" title="Email Me"><i class="fa-solid fa-envelope fa-2x"></i></a>
       <a href="https://www.linkedin.com/in/yangyang-luan-a49177335/" style="color: var(--global-theme-color);"><i class="fa-brands fa-linkedin fa-2x"></i></a>
       <a href="https://scholar.google.com/citations?hl=en&user=83fmELYAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--global-theme-color);"><i class="ai ai-google-scholar-square ai-2x"></i></a>
     </div>
+
     
 news: true # 保持原模板设置
 selected_papers: false
