@@ -149,41 +149,97 @@
 {% endif %}
 
 <style>
-  /* --- 1. 字体粗细与颜色 (Typography & Color) --- */
+  /* --- 1. 字体粗细 (Font Weight) --- */
   
-  /* 【正文配置】 */
-  /* 作用：400粗细 + #333333柔和黑 */
-  body, p, li, div, td, span, .desc {
-    font-weight: 400 !important;   /* 标准粗细，阅读不累 */
-    color: #333333 !important;     /* 【关键】柔和黑，不是纯黑(#000) */
+  /* 全局字重设为 400 (标准)，解决“太细”问题 */
+  body {
+    font-weight: 400 !important;
   }
-
-  /* 【大标题配置】 */
-  /* 作用：300细体 + #222222 (标题稍微比正文黑一点点，显精神) */
+  
+  /* 标题保持 300 (细体)，保持高级感 */
   h1, h2, h3, h4, .post-title, .navbar-brand {
-    font-weight: 300 !important;   /* 细体，保持高级感 */
-    color: #222222 !important;     /* 标题用深一点的黑，区分层次 */
+    font-weight: 300 !important;
   }
   
-  /* 【名字加粗部分】 "Yangyang" */
-  .post-title strong, 
-  .post-title b, 
-  .post-title .font-weight-bold,
-  .navbar-brand strong, 
-  .navbar-brand b {
-    font-weight: 500 !important;   /* 中等粗细 */
-    color: #000000 !important;     /* 名字部分可以用纯黑强调一下 */
+  /* 名字强调部分保持 500 */
+  .post-title strong, .navbar-brand b {
+    font-weight: 500 !important;
   }
 
 
-  /* --- 2. News 列表修正 (Fix News Date) --- */
+  /* --- 2. 颜色控制 (The Fix) --- */
   
-  .news table td, .news table th {
+  /* 【关键修改】只改变主要容器的颜色，不使用 !important 覆盖 span */
+  /* 这样年份(灰色)、奖项(红色)原本的 CSS 样式就不会被我们覆盖掉 */
+  body {
+    color: #333333; /* 柔和黑作为基底 */
+  }
+  
+  /* 确保段落文字也是柔和黑 */
+  p, li {
+    color: #333333;
+  }
+
+  /* 标题稍微深一点 */
+  h1, h2, h3, .post-title {
+    color: #222222;
+  }
+
+
+  /* --- 3. 暗色模式急救 (Dark Mode Rescue) --- */
+  
+  /* 强制覆盖回原来的颜色逻辑 */
+  [data-theme="dark"] body {
+    color: #e0e0e0 !important; /* 正文变回灰白 */
+  }
+  
+  [data-theme="dark"] p,
+  [data-theme="dark"] li,
+  [data-theme="dark"] .desc {
+    color: #e0e0e0 !important; /* 列表和段落变回灰白 */
+  }
+
+  /* 标题变白 */
+  [data-theme="dark"] h1, 
+  [data-theme="dark"] h2, 
+  [data-theme="dark"] h3, 
+  [data-theme="dark"] .post-title,
+  [data-theme="dark"] .navbar-brand {
+    color: #ffffff !important;
+  }
+  
+  /* 链接颜色 (保持你的静谧蓝) */
+  [data-theme="dark"] a {
+    color: #58a6ff !important; 
+    text-decoration: none;
+  }
+  [data-theme="dark"] a:hover {
+    color: #79c0ff !important;
+    text-decoration: underline;
+  }
+  
+  /* 保护导航栏链接颜色 */
+  [data-theme="dark"] .navbar a,
+  [data-theme="dark"] .profile .more-info a {
+    color: inherit !important;
+  }
+  
+  /* 【关键】修复暗色模式下的年份和元数据 */
+  /* 让它们变回原本的浅灰色，而不是死黑 */
+  [data-theme="dark"] .periodical, 
+  [data-theme="dark"] .abbr {
+    color: #a0a0a0 !important;
+  }
+
+
+  /* --- 4. News 列表修正 (仅调整大小，不碰颜色) --- */
+  
+  .news table td {
     font-size: 1rem !important;    
     font-weight: 400 !important;   
     font-family: inherit !important; 
     vertical-align: top !important; 
-    /* 这里的颜色继承 body 的 #333333，所以不用单独写 */
+    /* 删除了 color设置，让它自动继承或使用原本的灰色 */
   }
   
   .news table td:first-child {
