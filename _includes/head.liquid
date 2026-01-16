@@ -149,26 +149,29 @@
 {% endif %}
 
 <style>
-  /* --- 0. 字体粗细微调 (Font Weight Tuning) --- */
+  /* --- 1. 字体粗细精细控制 (Weight Tuning) --- */
   
-  /* 1. 正文加粗：从“细体”变为“标准” */
-  /* 解决“正文太细”的问题 */
-  body, p, li, div, td, span {
-    font-weight: 400 !important; /* 400 = Regular (标准)，原主题默认是 300 (Light) */
+  /* 【正文】保持你满意的“正常”粗细 */
+  /* 解决“正文太细”的问题：让阅读内容扎实清楚 */
+  body, p, li, div, td, span, .desc {
+    font-weight: 400 !important; /* Regular (标准) */
   }
 
-  /* 2. 首页名字减重：从“特粗”变为“中等” */
-  /* 解决“Yangyang太粗”的问题 */
-  .post-title, h1 {
-    font-weight: 400 !important; /* 标题基准设为标准 */
+  /* 【大标题】回归“清秀/细体” */
+  /* 解决“Yangyang Luan / Publications 变粗”的问题 */
+  /* 这里的逻辑是：字号越大，字重应该越轻，才显高级 */
+  h1, h2, h3, h4, .post-title, .navbar-brand {
+    font-weight: 300 !important; /* Light (细体) - 让大标题变回原来的优雅感 */
   }
   
-  /* 专门针对被加粗的部分 (即 Yangyang) */
-  /* 强制把加粗效果从 700 降为 500 (Medium) 或 600 (Semi-Bold) */
+  /* 【名字加粗部分】专门控制 "Yangyang" */
+  /* 也就是 HTML 里的 <b> 或 .font-weight-bold */
   .post-title strong, 
   .post-title b, 
-  .post-title .font-weight-bold {
-    font-weight: 500 !important; /* 这里控制"Yangyang"的粗细，500比较优雅 */
+  .post-title .font-weight-bold,
+  .navbar-brand strong, 
+  .navbar-brand b {
+    font-weight: 500 !important; /* Medium (中等) - 比 Luan 稍微粗一点点，但绝不臃肿 */
   }
 
   /* --- 1. 顶部间距极限压缩 (Extreme Spacing Reduction) --- */
