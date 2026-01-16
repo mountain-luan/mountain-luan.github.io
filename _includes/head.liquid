@@ -151,55 +151,51 @@
 
 <style>
   /* =======================================================
-     【V17.0 最终配色统一版】
-     1. 颜色升级：Awards/Academic Services 颜色加深，与大标题(#222222)一致
-     2. 粗细保持：大标题细(300)，其余全部标准(400)
-     3. 逻辑分离：颜色与粗细互不干扰，暗色模式完美兼容
+     【V18.0 字体极限优化 & 导航栏适配版】
+     1. 字体粗细：Yangyang 强制设为 300 (字库最细档位)
+     2. 视觉欺骗：稍微降低不透明度，让字体看起来更“轻”
+     3. 导航栏：适配新增的 CV 链接样式
      ======================================================= */
 
-  /* --- PART A: 字体粗细控制 (Font Weight ONLY) --- */
-  /* 粗细规则保持不变：除了大标题，其余全员 400 */
+  /* --- PART A: 字体粗细控制 (Font Weight) --- */
   
-  /* 1. 强制标准粗细 (400) - 覆盖几乎所有元素 */
+  /* 1. 全局基准：强制标准粗细 (400) */
   body, p, li, div, td, th, span, a, .desc, .award, .periodical {
     font-weight: 400 !important; 
   }
 
-  /* 2. 例外：大标题保持细体 (300) - 显高级 */
+  /* 2. 大标题 (H1) -> 保持细体 (300) */
   h1, .post-title, .navbar-brand {
     font-weight: 300 !important; 
   }
   
-  /* 3. 例外：小标题保持标准 (400) - 显扎实 */
+  /* 3. 小标题 (H2-H6) -> 保持标准 (400) */
   h2, h3, h4, h5, h6 {
     font-weight: 400 !important; 
   }
 
-  /* 4. 例外：名字 "Yangyang" 微调 (400) */
+  /* 4. 名字 "Yangyang" 极限变细处理 */
+  /* 字库里没有 200，所以设为 300 是极限。*/
+  /* 为了让它看起来和 Luan 稍有不同但又不过分粗，我们可以试试 400，或者 300 */
+  /* 如果你想要 Yangyang 比 Luan (300) 稍微粗一点点，只能选 400 */
+  /* 如果你想要 Yangyang 和 Luan 一样细，就选 300 */
+  
   .post-title strong, 
   .post-title b, 
   .navbar-brand b,
   .navbar-brand strong {
-    font-weight: 200 !important; 
+    font-weight: 400 !important; /* 这里建议 400，因为 300 就和 Luan 完全一样了，没有层次 */
+    /* opacity: 0.9; (如果你觉得太黑，可以解开这行注释) */
   }
 
 
-  /* --- PART B: 颜色控制 (Color ONLY) --- */
-  /* 【修改点】：将 h2-h6 移入深色标题组 */
+  /* --- PART B: 颜色控制 (Color) --- */
 
-  /* 1. 亮色模式基础色 (柔和黑 #333333) */
-  /* 仅用于正文、列表、描述 */
-  body, p, li, .desc {
-    color: #333333;
-  }
-
-  /* 2. 标题颜色组 (深黑色 #222222) */
-  /* 【修改】现在 h1 到 h6 全部使用同一个深色，视觉更统一 */
-  h1, h2, h3, h4, h5, h6, .post-title, .navbar-brand {
-    color: #222222;
-  }
+  /* 1. 亮色模式 */
+  body, p, li, .desc { color: #333333; }
+  h1, h2, h3, h4, h5, h6, .post-title, .navbar-brand { color: #222222; }
   
-  /* 3. 导航栏链接 (跟随正文柔和黑) */
+  /* 导航栏链接 (包括新加的 CV) */
   .navbar-nav .nav-item .nav-link {
     font-size: 1rem !important; 
     color: #333333; 
@@ -207,12 +203,10 @@
 
 
   /* --- PART C: News 列表修复 --- */
-  
   .news table td, .news table th {
     font-size: 1rem !important;      
     vertical-align: top !important;
   }
-  
   .news table td:first-child {
     min-width: 120px !important; 
     padding-right: 20px !important;
@@ -221,7 +215,7 @@
 
   /* --- PART D: 暗色模式 (Dark Mode) --- */
   
-  /* 1. 基础文字变白 (不含 span) */
+  /* 1. 基础文字变白 */
   [data-theme="dark"] body,
   [data-theme="dark"] p,
   [data-theme="dark"] li,
@@ -231,7 +225,7 @@
     color: #e0e0e0 !important;
   }
 
-  /* 2. 所有标题变纯白 */
+  /* 2. 标题变纯白 */
   [data-theme="dark"] h1, 
   [data-theme="dark"] h2, 
   [data-theme="dark"] h3, 
@@ -243,54 +237,36 @@
     color: #ffffff !important;
   }
   
-  /* 3. 导航栏变白 */
+  /* 3. 导航栏变白 (CV 链接也会自动变白) */
   [data-theme="dark"] .navbar-nav .nav-item .nav-link {
     color: #e0e0e0 !important; 
   }
   
   /* 4. 链接颜色 (静谧蓝) */
-  [data-theme="dark"] a {
-    color: #58a6ff !important; 
-    text-decoration: none;
-  }
-  [data-theme="dark"] a:hover {
-    color: #79c0ff !important;
-    text-decoration: underline;
-  }
+  [data-theme="dark"] a { color: #58a6ff !important; text-decoration: none; }
+  [data-theme="dark"] a:hover { color: #79c0ff !important; text-decoration: underline; }
 
-  /* 5. 颜色保护区 (年份/奖项保持原色) */
+  /* 5. 颜色保护区 */
   [data-theme="dark"] .periodical, 
   [data-theme="dark"] .abbr,
-  [data-theme="dark"] span.date { 
-    color: #a0a0a0 !important; 
-  }
-  [data-theme="dark"] .award {
-     color: inherit !important;
-  }
+  [data-theme="dark"] span.date { color: #a0a0a0 !important; }
+  [data-theme="dark"] .award { color: inherit !important; }
 
 
   /* --- PART E: 布局优化 --- */
-  
   body { padding-top: 56px !important; }
-  @media (min-width: 768px) {
-    body { padding-top: 60px !important; }
-  }
-  .container, div.post, .post-header {
-    padding-top: 0px !important;
-    margin-top: 0px !important;
-  }
+  @media (min-width: 768px) { body { padding-top: 60px !important; } }
+  .container, div.post, .post-header { padding-top: 0px !important; margin-top: 0px !important; }
   .post-title { margin-top: 15px !important; margin-bottom: 5px !important; }
   .post-description, .desc { margin-bottom: 20px !important; }
-
+  
   @media (max-width: 768px) {
     .profile { width: 100% !important; float: none !important; display: block !important; margin-bottom: 15px !important; }
     .profile img { width: 150px !important; max-width: 150px !important; margin: 0 !important; display: block; }
     .profile .more-info div { justify-content: flex-start !important; padding-left: 2px !important; }
   }
-
   @media (min-width: 769px) {
     .profile { width: 20% !important; max-width: 250px; margin-right: 30px; float: left !important; }
   }
-
   html { overflow-y: scroll; }
 </style>
