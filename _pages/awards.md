@@ -127,6 +127,7 @@ nav_order: 3
   <div class="service-header">Conference Reviewer</div>
   <ul class="service-list">
     <li>European Control Conference (ECC)</li>
+    <li>IFAC World Congress</li>
   </ul>
 </div>
 
