@@ -122,10 +122,13 @@ nav_order: 3
     <li>Automatica</li>
     <li>IEEE Transactions on Automatic Control (TAC)</li>
     <li>IEEE Transactions on Circuits and Systems II (TCAS-II)</li>
+    <li>IEEE Control Systems Letters</li>
+    <li>Chaos, Solitons and Fractals</li>
   </ul>
 
   <div class="service-header">Conference Reviewer</div>
   <ul class="service-list">
+    <li>IEEE Conference on Decision and Control (CDC)</li>
     <li>European Control Conference (ECC)</li>
     <li>IFAC World Congress</li>
   </ul>
